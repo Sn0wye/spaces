@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          300: "#996DFF",
-          500: "#8257e6",
-        },
+        brand: "#8257e6",
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },
