@@ -1,40 +1,53 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SelectedCategory } from "../../Contexts/SelectedCategory";
 
 type Props = {};
 
 export const Categories = (props: Props) => {
-  const [selected, setSelected] = useState<string>("all");
+  const { selectedCategory, setSelectedCategory } =
+    useContext(SelectedCategory);
+
+  function handleSetSelected(newCategory: string) {
+    setSelectedCategory(newCategory);
+  }
+
   return (
     <section className="w-[17.375rem] border-r border-solid border-zinc-100 flex flex-col gap-4 text-3xl pl-16 pt-44">
       <h1
         className={
-          selected === "all" ? "font-bold text-brand" : "cursor-pointer"
+          selectedCategory === "all" ? "font-bold text-brand" : "cursor-pointer"
         }
-        onClick={() => setSelected("all")}
+        onClick={() => handleSetSelected("all")}
       >
         All
       </h1>
       <h1
         className={
-          selected === "groceries" ? "font-bold text-brand" : "cursor-pointer"
+          selectedCategory === "groceries"
+            ? "font-bold text-brand"
+            : "cursor-pointer"
         }
-        onClick={() => setSelected("groceries")}
+        onClick={() => handleSetSelected("groceries")}
       >
         Groceries
       </h1>
       <h1
         className={
-          selected === "college" ? "font-bold text-brand" : "cursor-pointer"
+          selectedCategory === "college"
+            ? "font-bold text-brand"
+            : "cursor-pointer"
         }
-        onClick={() => setSelected("college")}
+        onClick={() => handleSetSelected("college")}
       >
         College
       </h1>
       <h1
         className={
-          selected === "payments" ? "font-bold text-brand" : "cursor-pointer"
+          selectedCategory === "payments"
+            ? "font-bold text-brand"
+            : "cursor-pointer"
         }
-        onClick={() => setSelected("payments")}
+        onClick={() => handleSetSelected("payments")}
       >
         Payments
       </h1>
