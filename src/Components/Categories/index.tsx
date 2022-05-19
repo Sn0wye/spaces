@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SelectedCategory } from "../../Contexts/SelectedCategory";
 
 export const Categories = () => {
