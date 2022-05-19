@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { Row } from "./Row";
+import { TodoRow } from "./TodoRow";
 import { data } from "../todos";
-import { Todo } from "../types/todos";
+import { Todo } from "../types/todo";
 import { AddTodo } from "./AddTodo";
 
 export const Todos = () => {
@@ -52,15 +52,15 @@ export const Todos = () => {
     setTodos(updatedTodos);
   }
   return (
-    <section className="w-10/12 sm:w-10/11 lg-1/2 max-w-2xl flex flex-col items-center">
+    <section className="w-full h-full">
       <AddTodo
         task={task}
         handleChange={handleChange}
         handleSubmitTodo={handleSubmitTodo}
       />
-      <div className="h-10 " />
+      <div className="" />
       {todos.map((todo) => (
-        <Row
+        <TodoRow
           key={todo.id}
           todo={todo}
           handleDeleteTodo={handleDeleteTodo}
