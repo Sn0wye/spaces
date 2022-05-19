@@ -52,7 +52,7 @@ export const Todos = () => {
     setTodos(updatedTodos);
   }
   return (
-    <section className="w-full h-full">
+    <div className="w-full h-full">
       <AddTodo
         task={task}
         handleChange={handleChange}
@@ -73,6 +73,6 @@ export const Todos = () => {
       ) : (
         <p>Please Add a Todo!</p>
       )}
-    </section>
+    </div>
   );
 };
