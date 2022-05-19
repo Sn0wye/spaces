@@ -17,7 +17,7 @@ export const AddTodo = ({
 
   return (
     <form
-      className="flex justify-between align-center w-full border-transparent bg-zinc-100 mt-5 rounded-xl"
+      className="flex justify-between align-center w-full border-transparent bg-zinc-100 mt-5 mb-10 rounded-xl"
       onSubmit={handleSubmitTodo}
     >
       <input
