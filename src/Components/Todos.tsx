@@ -51,6 +51,20 @@ export const Todos = () => {
     });
     setTodos(updatedTodos);
   }
+
+  function handleUpdateTodo(id: string, newTask: string) {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          task: newTask,
+        };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  }
+
   return (
     <div className="w-full h-full">
       <AddTodo
@@ -65,6 +79,7 @@ export const Todos = () => {
           todo={todo}
           handleDeleteTodo={handleDeleteTodo}
           handleCheckTodo={handleCheckTodo}
+          handleUpdateTodo={handleUpdateTodo}
         />
       ))}
 
