@@ -1,12 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { TodoRow } from "./TodoRow";
-import { data } from "../todos";
 import { Todo } from "../types/todo";
 import { AddTodo } from "./AddTodo";
 
 export const Todos = () => {
-  const [todos, setTodos] = useState<Todo[]>(data);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [task, setTask] = useState("");
   const todosLength = todos.length;
   const hasTodos = todos.length > 0;
