@@ -35,15 +35,15 @@ const Modal = ({
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="w-full h-full max-w-md max-h-72 bg-white rounded-xl flex flex-col justify-center items-center">
-            <Dialog.Title className="font-bold text-black text-2xl">
+          <Dialog.Panel className="w-full h-full max-w-md max-h-72 bg-white dark:bg-zinc-800 rounded-xl flex flex-col justify-center items-center">
+            <Dialog.Title className="font-bold text-black dark:text-white text-2xl">
               Update Todo Info
             </Dialog.Title>
             <input
               type="text"
               value={newTask}
               onChange={(e) => setNewTask(e.target.value)}
-              className="w-4/5 p-2 mt-8 font-poppins text-md font-normal text-zinc-500 border-none outline-none bg-zinc-100 rounded-xl focus:border-brand border-brand"
+              className="w-4/5 p-2 mt-8 font-poppins text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand"
             />
             <button
               type="submit"
