@@ -17,14 +17,12 @@ const backdropVariants = {
 
 const modalVariants = {
   hidden: {
-    y: "-100vh",
-    opacity: 0,
+    scale: 0,
   },
   visible: {
-    y: 0,
-    opacity: 1,
+    scale: 1,
     transition: {
-      delay: 0.5,
+      delay: 0.2,
     },
   },
 };
@@ -55,5 +53,4 @@ const Modal = ({ showModal, setShowModal }: Props) => {
     </AnimatePresence>
   );
 };
-
 export default Modal;
