@@ -1,4 +1,5 @@
 import { Categories } from "./Components/Categories";
+import Modal from "./Components/Modal";
 import Title from "./Components/Title";
 import { Todos } from "./Components/Todos";
 import { SelectedCategoryProvider } from "./Contexts/SelectedCategory";
@@ -13,6 +14,7 @@ function App() {
             <Title />
             <Todos />
           </section>
+          <Modal showModal={true} setShowModal={() => {}} />
         </SelectedCategoryProvider>
       </main>
     </div>
