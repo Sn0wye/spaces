@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SelectedCategory } from "../Contexts/SelectedCategory";
+import { SelectedCategory } from "../../Contexts/SelectedCategory";
 
 export const Categories = () => {
   const { selectedCategory, setSelectedCategory } =

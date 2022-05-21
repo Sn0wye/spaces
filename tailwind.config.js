@@ -7,7 +7,6 @@ module.exports = {
     extend: {
       colors: {
         brand: "#8257e6",
-        "brand-light": "#996DFF",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
