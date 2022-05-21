@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="h-screen flex justify-center items-center bg-brand font-poppins text-zinc-800 dark:text-zinc-100">
-      <main className="w-9/12 h-5/6 bg-white dark:bg-zinc-800 flex divide-x divide-zinc-100 rounded-xl shadow-2xl">
+      <main className="w-9/12 h-5/6 bg-white dark:bg-zinc-800 flex divide-x divide-zinc-100 dark:divide-zinc-700 rounded-xl shadow-2xl">
         <SelectedCategoryProvider>
           <Categories />
           <section className="px-16 w-full">
