@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Categories } from "./Components/Categories";
 import Modal from "./Components/Modal";
 import Title from "./Components/Title";
@@ -14,7 +15,6 @@ function App() {
             <Title />
             <Todos />
           </section>
-          <Modal showModal={true} setShowModal={() => {}} />
         </SelectedCategoryProvider>
       </main>
     </div>
