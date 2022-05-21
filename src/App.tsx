@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Categories } from "./Components/Categories";
+import Modal from "./Components/Modal";
 import Title from "./Components/Title";
 import { Todos } from "./Components/Todos";
 import { SelectedCategoryProvider } from "./Contexts/SelectedCategory";
