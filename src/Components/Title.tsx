@@ -6,7 +6,7 @@ export default function Title() {
   const { selectedCategory } = useContext(SelectedCategory);
 
   return (
-    <h1 className="text-4xl font-bold pt-10">
+    <h1 className="text-5xl font-bold pt-10">
       {selectedCategory === "all"
         ? "All Tasks"
         : capitalizeFirstLetter(selectedCategory)}
