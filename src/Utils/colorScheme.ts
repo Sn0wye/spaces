@@ -1,15 +1,11 @@
-function verifyTheme() {
+export function verifyTheme() {
   if (
     localStorage.theme === "dark" ||
     (!("theme" in localStorage) &&
       window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
-    document.documentElement.classList.add("dark");
+    return "dark";
   } else {
-    document.documentElement.classList.remove("dark");
+    return "light";
   }
 }
-function setTheme(theme: string) {
-  localStorage.theme = theme;
-}
-export { verifyTheme, setTheme };
