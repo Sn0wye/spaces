@@ -10,7 +10,7 @@ export const Categories = () => {
   }
 
   return (
-    <section className="w-[17.375rem] flex flex-col gap-4 text-3xl px-16 pt-44 ">
+    <section className="w-fit-content flex flex-col gap-4 text-3xl px-12 pt-44 ">
       <h1
         className={
           selectedCategory === "all" ? "font-bold text-brand" : "cursor-pointer"
