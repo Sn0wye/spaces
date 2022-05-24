@@ -41,10 +41,15 @@ export const TodoRow = ({
           </p>
         </div>
         <div className="flex gap-6">
-          <button aria-label="Update a todo" onClick={handleToggleModal}>
+          <button
+            aria-label="Update a todo"
+            onClick={handleToggleModal}
+            className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
+          >
             <PencilSimple size={24} className="text-brand" />
           </button>
           <button
+            className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
             aria-label="Delete a todo"
             onClick={() => handleDeleteTodo(id)}
           >

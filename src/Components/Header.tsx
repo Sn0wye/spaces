@@ -4,10 +4,11 @@ import { SelectedCategory } from "../Contexts/SelectedCategory";
 import { capitalizeFirstLetter } from "../Utils/utils";
 
 type TitleProps = {
+  theme: string;
   toggleTheme: () => void;
 };
 
-export default function Title({ theme, toggleTheme }: any) {
+export default function Header({ theme, toggleTheme }: TitleProps) {
   const { selectedCategory } = useContext(SelectedCategory);
 
   return (
@@ -18,13 +19,13 @@ export default function Title({ theme, toggleTheme }: any) {
           : capitalizeFirstLetter(selectedCategory)}
       </h1>
       <button
-        className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2"
+        className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
         onClick={toggleTheme}
       >
         {theme === "dark" ? (
-          <Sun size={45} weight="bold" />
+          <Sun size={45} weight="bold" className="text-brand" />
         ) : (
-          <Moon size={45} weight="bold" />
+          <Moon size={45} weight="bold" className="text-brand" />
         )}
       </button>
     </header>

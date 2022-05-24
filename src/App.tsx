@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Categories } from "./Components/Categories";
-import Title from "./Components/Title";
+import Header from "./Components/Header";
 import { Todos } from "./Components/Todos";
 import { SelectedCategoryProvider } from "./Contexts/SelectedCategory";
 
@@ -21,7 +21,7 @@ function App() {
         <SelectedCategoryProvider>
           <Categories />
           <section className="px-16 w-full">
-            <Title theme={theme} toggleTheme={toggleTheme} />
+            <Header theme={theme} toggleTheme={toggleTheme} />
             <Todos />
           </section>
         </SelectedCategoryProvider>
