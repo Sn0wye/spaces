@@ -10,10 +10,12 @@ export const Categories = () => {
   }
 
   return (
-    <section className="w-fit-content flex flex-col gap-4 text-3xl px-12 pt-44 ">
+    <section className="w-fit flex flex-col gap-4 text-3xl px-12 pt-44 ">
       <h1
         className={
-          selectedCategory === "all" ? "font-bold text-brand" : "cursor-pointer"
+          selectedCategory === "all"
+            ? "font-bold text-brand p-2"
+            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("all")}
       >
@@ -22,8 +24,8 @@ export const Categories = () => {
       <h1
         className={
           selectedCategory === "groceries"
-            ? "font-bold text-brand"
-            : "cursor-pointer"
+            ? "font-bold text-brand p-2"
+            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("groceries")}
       >
@@ -32,8 +34,8 @@ export const Categories = () => {
       <h1
         className={
           selectedCategory === "college"
-            ? "font-bold text-brand"
-            : "cursor-pointer"
+            ? "font-bold text-brand p-2"
+            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("college")}
       >
@@ -42,8 +44,8 @@ export const Categories = () => {
       <h1
         className={
           selectedCategory === "payments"
-            ? "font-bold text-brand"
-            : "cursor-pointer"
+            ? "font-bold text-brand p-2"
+            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("payments")}
       >
