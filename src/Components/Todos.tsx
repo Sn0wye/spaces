@@ -65,7 +65,7 @@ export const Todos = () => {
   }
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-fit">
       <AddTodo
         task={task}
         handleChange={handleChange}
