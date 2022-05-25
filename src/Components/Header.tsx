@@ -1,15 +1,22 @@
 import { Moon, Sun } from "phosphor-react";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SelectedCategory } from "../Contexts/SelectedCategory";
+import { Theme } from "../Contexts/Theme";
 import { capitalizeFirstLetter } from "../Utils/utils";
 
-type TitleProps = {
-  theme: string;
-  toggleTheme: () => void;
-};
-
-export default function Header({ theme, toggleTheme }: TitleProps) {
+export default function Header() {
   const { selectedCategory } = useContext(SelectedCategory);
+  const { theme, setTheme } = useContext(Theme);
+
+  function handleThemeToggle() {
+    if (theme === "light") {
+      setTheme("dark");
+      return;
+    }
+    if (theme === "dark") {
+      setTheme("light");
+    }
+  }
 
   return (
     <header className="flex items-center justify-between pt-10">
@@ -20,7 +27,7 @@ export default function Header({ theme, toggleTheme }: TitleProps) {
       </h1>
       <button
         className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
-        onClick={toggleTheme}
+        onClick={handleThemeToggle}
       >
         {theme === "dark" ? (
           <Sun size={45} weight="bold" className="text-brand" />

@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Todo } from "../types/todo";
+import { Theme } from "../Contexts/Theme";
 
 type Props = {
   isModalOpen: boolean;
@@ -16,6 +17,7 @@ const Modal = ({
   todo,
 }: Props) => {
   const [newTask, setNewTask] = useState(todo.task);
+  const { theme } = useContext(Theme);
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
@@ -24,7 +26,8 @@ const Modal = ({
           handleToggleModal();
           setNewTask(todo.task);
         }}
-        className="fixed inset-0 z-1 w-full h-full bg-black bg-opacity-50 flex justify-center items-center select-none"
+        className={`${theme === "dark" ? "dark" : ""}
+        fixed inset-0 z-1 w-full h-full bg-black bg-opacity-50 flex justify-center items-center select-none`}
       >
         <Transition.Child
           as={Fragment}

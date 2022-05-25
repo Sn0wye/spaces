@@ -1,16 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Categories } from "./Components/Categories";
 import Header from "./Components/Header";
 import { Todos } from "./Components/Todos";
 import { SelectedCategoryProvider } from "./Contexts/SelectedCategory";
+import { Theme } from "./Contexts/Theme";
 
 function App() {
-  // const actualTheme = verify
-  const [theme, setTheme] = useState("light");
+  const { theme } = useContext(Theme);
 
-  function toggleTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
-  }
   return (
     <div
       className={`${
@@ -21,7 +18,7 @@ function App() {
         <SelectedCategoryProvider>
           <Categories />
           <section className="px-16 w-full">
-            <Header theme={theme} toggleTheme={toggleTheme} />
+            <Header />
             <Todos />
           </section>
         </SelectedCategoryProvider>
