@@ -10,7 +10,7 @@ type Props = {
   todo: Todo;
 };
 
-const Modal = ({
+const EditTodoModal = ({
   isModalOpen,
   handleToggleModal,
   handleUpdateTodo,
@@ -64,4 +64,4 @@ const Modal = ({
     </Transition>
   );
 };
-export default Modal;
+export default EditTodoModal;

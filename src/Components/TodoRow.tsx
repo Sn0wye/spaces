@@ -1,7 +1,7 @@
 import { PencilSimple, Trash } from "phosphor-react";
 import { useState } from "react";
 import { Todo } from "../types/todo";
-import Modal from "./Modal";
+import EditTodoModal from "./EditTodoModal";
 
 type TodoProps = {
   todo: Todo;
@@ -57,7 +57,7 @@ export const TodoRow = ({
           </button>
         </div>
       </div>
-      <Modal
+      <EditTodoModal
         isModalOpen={isModalOpen}
         handleToggleModal={handleToggleModal}
         handleUpdateTodo={handleUpdateTodo}
