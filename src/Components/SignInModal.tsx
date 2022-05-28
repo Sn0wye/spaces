@@ -1,7 +1,8 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Theme } from "../Contexts/Theme";
-import { signInWithGoogle } from "../Services/auth";
+import { signIn, signInWithGoogle } from "../Services/auth";
+import { useForm } from "react-hook-form";
 
 type Props = {
   isModalOpen: boolean;
@@ -10,6 +11,17 @@ type Props = {
 
 export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
   const { theme } = useContext(Theme);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  function onSubmit(data: any) {
+    const { email, password } = data;
+    signIn(email, password);
+    console.log("deu bom");
+  }
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
@@ -29,32 +41,45 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="w-full max-w-md max-h-96 bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center p-4">
+          <Dialog.Panel className="w-full max-w-md bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center p-4">
             <Dialog.Title className="font-bold text-black dark:text-white text-2xl">
               Sign In
             </Dialog.Title>
-            <form className="flex flex-col items-center mt-2">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col items-center mt-2"
+            >
               <label className="self-start text-zinc-400 dark:text-zinc-300 my-1">
                 Email
               </label>
               <input
                 type="text"
                 placeholder="Enter your email address"
-                className="p-3 font-poppins font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand"
+                className="p-3 font-poppins font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-md focus:border-brand focus:outline-brand"
+                {...register("email", { required: true })}
               />
+              {errors.email && (
+                <p className="text-red-500 my-1 italic">Email is required.</p>
+              )}
               <label className="self-start text-zinc-400 dark:text-zinc-300 my-1">
                 Password
               </label>
               <input
                 type="password"
                 placeholder="Enter your password"
-                className="p-3 font-poppins font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand"
+                className="p-3 font-poppins font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-md focus:border-brand focus:outline-brand"
+                {...register("password", { required: true })}
               />
+              {errors.password && (
+                <span className="text-red-500 my-1 italic">
+                  Password is required.
+                </span>
+              )}
               <button
                 type="submit"
-                className="text-white font-bold rounded-xl bg-brand p-4 w-fit h-10 flex gap-2 justify-center items-center mt-4 hover:bg-brand-light transition-colors"
+                className="text-white font-bold rounded-md bg-brand p-4 w-fit h-10 flex gap-2 justify-center items-center mt-4 hover:bg-brand-light transition-colors"
               >
-                Done
+                Sign In
               </button>
             </form>
             <span className="text-zinc-800 dark:text-zinc-300 mt-2">
