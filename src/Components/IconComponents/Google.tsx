@@ -3,8 +3,8 @@ import { SVGProps } from "react";
 
 const SvgGoogle = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    width="32px"
-    height="32px"
+    width="1em"
+    height="1em"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

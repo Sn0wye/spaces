@@ -3,8 +3,8 @@ import { SVGProps } from "react";
 
 const SvgEyeVisible = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    width="42px"
-    height="42px"
+    width="1em"
+    height="1em"
     viewBox="0 0 42 32"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
