@@ -48,7 +48,7 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="w-full max-w-2xl h-fit bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center font-poppins px-24">
+          <Dialog.Panel className="w-2xl h-fit max-h-screen overflow-scroll bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center font-poppins px-24">
             <header>
               <h1 className="font-bold text-zinc-800 dark:text-zinc-100 text-[2.625rem] px-14 mt-12 mb-7">
                 Sign In
