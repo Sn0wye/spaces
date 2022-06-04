@@ -1,4 +1,4 @@
-import { Moon, Sun } from "phosphor-react";
+import { Moon, Sun } from "./IconComponents";
 import { useContext } from "react";
 import { SelectedCategory } from "../Contexts/SelectedCategory";
 import { Theme } from "../Contexts/Theme";
@@ -26,13 +26,13 @@ export default function Header() {
           : capitalizeFirstLetter(selectedCategory)}
       </h1>
       <button
-        className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
+        className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
         onClick={handleThemeToggle}
       >
         {theme === "dark" ? (
-          <Sun size={45} weight="bold" className="text-brand" />
+          <Sun className="text-brand text-5xl " />
         ) : (
-          <Moon size={45} weight="bold" className="text-brand" />
+          <Moon className="text-brand text-5xl" />
         )}
       </button>
     </header>

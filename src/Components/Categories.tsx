@@ -15,7 +15,7 @@ export const Categories = () => {
         className={
           selectedCategory === "all"
             ? "font-bold text-brand p-2"
-            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
+            : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("all")}
       >
@@ -25,7 +25,7 @@ export const Categories = () => {
         className={
           selectedCategory === "groceries"
             ? "font-bold text-brand p-2"
-            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
+            : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("groceries")}
       >
@@ -35,7 +35,7 @@ export const Categories = () => {
         className={
           selectedCategory === "college"
             ? "font-bold text-brand p-2"
-            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
+            : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("college")}
       >
@@ -45,7 +45,7 @@ export const Categories = () => {
         className={
           selectedCategory === "payments"
             ? "font-bold text-brand p-2"
-            : "cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors p-2"
+            : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2"
         }
         onClick={() => handleSetSelected("payments")}
       >
