@@ -44,12 +44,12 @@ export const TodoRow = ({
           <button
             aria-label="Update a todo"
             onClick={handleToggleModal}
-            className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
+            className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
           >
             <PencilSimple size={24} className="text-brand" />
           </button>
           <button
-            className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
+            className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
             aria-label="Delete a todo"
             onClick={() => handleDeleteTodo(id)}
           >
