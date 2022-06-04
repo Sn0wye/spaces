@@ -28,6 +28,7 @@ export default function Header() {
       <button
         className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
         onClick={handleThemeToggle}
+        aria-label="Toggle Theme"
       >
         {theme === "dark" ? (
           <Sun className="text-brand text-5xl " />
