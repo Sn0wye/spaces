@@ -5,3 +5,5 @@ export { default as Password } from "./Password";
 export { default as User } from "./User";
 export { default as Moon } from "./Moon";
 export { default as Sun } from "./Sun";
+export { default as Pencil } from "./Pencil";
+export { default as Trash } from "./Trash";
