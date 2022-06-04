@@ -1,4 +1,4 @@
-import { PencilSimple, Trash } from "phosphor-react";
+import { Pencil, Trash } from "./IconComponents";
 import { useState } from "react";
 import { Todo } from "../types/todo";
 import EditTodoModal from "./EditTodoModal";
@@ -46,14 +46,14 @@ export const TodoRow = ({
             onClick={handleToggleModal}
             className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
           >
-            <PencilSimple size={24} className="text-brand" />
+            <Pencil className="text-brand text-2xl" />
           </button>
           <button
             className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
             aria-label="Delete a todo"
             onClick={() => handleDeleteTodo(id)}
           >
-            <Trash size={24} className=" text-brand" />
+            <Trash className=" text-brand text-2xl" />
           </button>
         </div>
       </div>
