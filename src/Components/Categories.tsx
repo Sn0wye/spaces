@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { SelectedCategory } from "../Contexts/SelectedCategory";
 import { Category } from "./Category";
 
 let categories = {
@@ -11,10 +9,8 @@ let categories = {
 };
 
 export const Categories = () => {
-  useContext(SelectedCategory);
-
   return (
-    <section className="w-fit flex flex-col gap-4 text-3xl px-12 pt-44 ">
+    <section className="w-fit flex flex-col gap-4 text-3xl px-12 pt-44">
       {Object.entries(categories).map(([key, value]) => (
         <Category key={key}>{value}</Category>
       ))}
