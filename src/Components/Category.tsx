@@ -11,7 +11,7 @@ export const Category = ({ children }: Props) => {
   return (
     <h1
       className={
-        selectedCategory === ""
+        selectedCategory === `${children}`
           ? "font-bold text-brand p-2"
           : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2"
       }
