@@ -42,22 +42,24 @@ const EditTodoModal = ({
             <Dialog.Title className="font-bold text-black dark:text-white text-2xl">
               Update Todo Info
             </Dialog.Title>
-            <input
-              type="text"
-              value={newTask}
-              onChange={(e) => setNewTask(e.target.value)}
-              className="w-4/5 p-2 mt-8 font-poppins text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand"
-            />
-            <button
-              type="submit"
-              className="text-white font-bold rounded-xl bg-brand p-4 w-20 h-10 flex justify-center items-center mt-4 hover:bg-brand-light transition-colors"
-              onClick={() => {
-                handleToggleModal();
-                handleUpdateTodo(todo.id, newTask);
-              }}
-            >
-              Done
-            </button>
+            <form className="flex flex-col justify-center items-center">
+              <input
+                type="text"
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+                className="w-4/5 p-2 mt-8 font-poppins text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand"
+              />
+              <button
+                type="submit"
+                className="text-white font-bold rounded-xl bg-brand p-4 w-20 h-10 flex justify-center items-center mt-4 hover:bg-brand-light transition-colors"
+                onClick={() => {
+                  handleToggleModal();
+                  handleUpdateTodo(todo.id, newTask);
+                }}
+              >
+                Done
+              </button>
+            </form>
           </Dialog.Panel>
         </Transition.Child>
       </Dialog>
