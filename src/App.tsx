@@ -12,9 +12,9 @@ function App() {
     <div
       className={`${
         theme === "dark" ? "dark" : ""
-      } h-screen flex justify-center items-center bg-brand font-poppins`}
+      } h-screen flex justify-center items-center font-poppins`}
     >
-      <main className="w-9/12 h-5/6 bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 flex divide-x divide-zinc-100 dark:divide-zinc-700 rounded-xl shadow-2xl">
+      <main className="w-full h-full bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 flex divide-x divide-zinc-100 dark:divide-zinc-700">
         <SelectedCategoryProvider>
           <Categories />
           <section className="px-16 w-full">

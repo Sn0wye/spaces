@@ -13,7 +13,7 @@ export const Category = ({ children }: Props) => {
       className={
         selectedCategory === `${children}`
           ? "bg-zinc-300 dark:bg-zinc-600 p-2 rounded-lg transition-all"
-          : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2"
+          : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2 w-80"
       }
       onClick={() => setSelectedCategory(`${children}`)}
     >
