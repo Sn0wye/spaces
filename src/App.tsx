@@ -12,7 +12,7 @@ function App() {
     <div
       className={`${
         theme === "dark" ? "dark" : ""
-      } h-screen flex justify-center items-center font-poppins`}
+      } h-screen flex justify-center items-center font-inter`}
     >
       <main className="w-full h-full bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 flex divide-x divide-zinc-100 dark:divide-zinc-700">
         <SelectedCategoryProvider>

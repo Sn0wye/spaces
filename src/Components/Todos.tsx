@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 import { TodoRow } from "./TodoRow";
 import { Todo } from "../types/todo";
 import { AddTodo } from "./AddTodo";
+import { getGithubUser } from "../Services/auth";
 
 export const Todos = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -15,6 +16,7 @@ export const Todos = () => {
     const updatedTodos = [...todos, todo];
     setTodos(updatedTodos);
     setTask("");
+    getGithubUser();
   }
 
   function handleChange(e: ChangeEvent) {

@@ -48,7 +48,7 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="w-2xl h-fit max-h-screen overflow-scroll bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center font-poppins px-24">
+          <Dialog.Panel className="w-2xl h-fit max-h-screen overflow-scroll bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center font-inter px-24">
             <header>
               <h1 className="font-bold text-zinc-800 dark:text-zinc-100 text-[2.625rem] px-14 mt-12 mb-7">
                 Sign In
@@ -66,7 +66,7 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
                 <Email className="ml-4 text-zinc-300 dark:text-zinc-600 text-4xl" />
                 <input
                   type="email"
-                  className="p-3 font-poppins font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
+                  className="p-3 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
                   {...register("email", { required: true })}
                 />
               </div>
@@ -82,7 +82,7 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
                 <Password className="ml-4 text-zinc-300 dark:text-zinc-600 text-4xl" />
                 <input
                   type={`${isPasswordVisible ? "text" : "password"}`}
-                  className="p-3 font-poppins font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
+                  className="p-3 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
                   {...register("password", { required: true })}
                 />
                 <button onClick={toggleShowPassword}>

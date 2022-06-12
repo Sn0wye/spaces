@@ -29,7 +29,7 @@ export const TodoRow = ({
           <input
             type="checkbox"
             checked={isCompleted}
-            className="w-9 h-9 border-brand rounded-xl checked:bg-brand dark:bg-zinc-800 dark:checked:bg-brand"
+            className="w-9 h-9 border-brand rounded-xl checked:bg-brand dark:bg-zinc-800 dark:checked:bg-brand focus:ring-brand"
             onChange={() => handleCheckTodo(id)}
           />
           <p

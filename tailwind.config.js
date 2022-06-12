@@ -9,7 +9,7 @@ module.exports = {
         "brand-light": "#996DFF",
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },

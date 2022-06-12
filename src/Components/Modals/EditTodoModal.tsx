@@ -47,7 +47,7 @@ const EditTodoModal = ({
                 type="text"
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
-                className="w-4/5 p-2 mt-8 font-poppins text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand"
+                className="w-4/5 p-2 mt-8 font-inter text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand"
               />
               <button
                 type="submit"
