@@ -1,7 +1,7 @@
 import { Pencil, Trash } from "./IconComponents";
 import { useState } from "react";
 import { Todo } from "../types/todo";
-import EditTodoModal from "./EditTodoModal";
+import EditTodoModal from "./Modals/EditTodoModal";
 
 type TodoProps = {
   todo: Todo;

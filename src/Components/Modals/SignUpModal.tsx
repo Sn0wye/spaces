@@ -1,16 +1,16 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Theme } from "../Contexts/Theme";
-import { signIn, signInWithGoogle } from "../Services/auth";
-import { useForm } from "react-hook-form";
-import { Email, EyeVisible, Google, Password } from "./IconComponents";
+import { Theme } from "../../Contexts/Theme";
+import { signUp, signInWithGoogle } from "../../Services/auth";
+import { FieldValues, useForm } from "react-hook-form";
+import { Email, EyeVisible, Google, Password, User } from "../IconComponents";
 
 type Props = {
   isModalOpen: boolean;
   handleToggleModal: () => void;
 };
 
-export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
+export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
   const { theme } = useContext(Theme);
   const {
     register,
@@ -19,10 +19,8 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
   } = useForm();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  function onSubmit(data: any) {
-    const { email, password } = data;
-    signIn(email, password);
-    console.log("deu bom");
+  function onSubmit({ email, password }: FieldValues) {
+    signUp(email, password);
   }
 
   function toggleShowPassword() {
@@ -51,15 +49,31 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
           <Dialog.Panel className="w-2xl h-fit max-h-screen overflow-scroll bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center font-poppins px-24">
             <header>
               <h1 className="font-bold text-zinc-800 dark:text-zinc-100 text-[2.625rem] px-14 mt-12 mb-7">
-                Sign In
+                Create Account
               </h1>
               <span className="block h-1 w-full bg-zinc-300 dark:bg-zinc-600" />
             </header>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col items-center mt-4 w-full"
+              className="flex flex-col items-center mt-10 w-full"
             >
               <label className="self-start text-zinc-800 dark:text-zinc-100 mb-2 font-light text-3xl">
+                Display Name
+              </label>
+              <div className="w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md">
+                <User className="ml-4 text-zinc-300 dark:text-zinc-600 text-4xl" />
+                <input
+                  type="text"
+                  className="p-3 font-poppins font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
+                  {...register("displayName", { required: true })}
+                />
+              </div>
+              {errors.displayName && (
+                <span className="text-red-500 italic text-center mt-2">
+                  Display Name is required.
+                </span>
+              )}
+              <label className="self-start text-zinc-800 dark:text-zinc-100 mb-2 font-light text-3xl mt-16">
                 Email
               </label>
               <div className="w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md">
@@ -70,6 +84,7 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
                   {...register("email", { required: true })}
                 />
               </div>
+
               {errors.email && (
                 <span className="text-red-500 italic text-center mt-2">
                   Email is required.
@@ -95,19 +110,11 @@ export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
                   Password is required.
                 </span>
               )}
-              <div className="flex gap-2 my-14">
-                <span className="text-zinc-800 dark:text-zinc-100 text-2xl font-light">
-                  No Account?
-                </span>
-                <span className="text-brand cursor-pointer hover:underline text-2xl font-medium">
-                  Sign Up
-                </span>
-              </div>
               <button
                 type="submit"
-                className="text-white font-semibold text-2xl tracking-widest rounded-md bg-brand p-4 w-full h-16 flex gap-2 justify-center items-center mt-4 hover:bg-brand-light transition-colors"
+                className="text-white font-semibold text-2xl tracking-widest rounded-md bg-brand p-4 w-full h-16 flex gap-2 justify-center items-center mt-20 hover:bg-brand-light transition-colors"
               >
-                SIGN IN
+                CREATE ACCOUNT
               </button>
             </form>
 

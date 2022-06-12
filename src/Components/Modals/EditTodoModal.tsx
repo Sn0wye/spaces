@@ -1,7 +1,7 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Todo } from "../types/todo";
-import { Theme } from "../Contexts/Theme";
+import { Todo } from "../../types/todo";
+import { Theme } from "../../Contexts/Theme";
 
 type Props = {
   isModalOpen: boolean;
