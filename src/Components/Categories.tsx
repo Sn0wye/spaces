@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { supabase } from "../Services/supabase";
 import { Category } from "./Category";
 
 type Category = {
-  id: string;
+  uuid: string;
   name: string;
 };
 
@@ -21,14 +21,17 @@ export const Categories = () => {
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchData();
   }, []);
 
   return (
     <section className="w-fit flex flex-col gap-4 text-3xl px-12 pt-44">
+      <Category key="all">All</Category>
       {categories &&
-        categories.map(({ id, name }) => <Category key={id}>{name}</Category>)}
+        categories.map(({ uuid, name }) => (
+          <Category key={uuid}>{name}</Category>
+        ))}
     </section>
   );
 };

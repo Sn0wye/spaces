@@ -12,7 +12,7 @@ export const Category = ({ children }: Props) => {
     <h1
       className={
         selectedCategory === `${children}`
-          ? "font-bold text-brand p-2"
+          ? "bg-zinc-300 dark:bg-zinc-600 p-2 rounded-lg transition-all"
           : "cursor-pointer hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg transition-colors p-2"
       }
       onClick={() => setSelectedCategory(`${children}`)}

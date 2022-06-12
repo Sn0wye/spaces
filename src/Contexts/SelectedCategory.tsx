@@ -9,7 +9,7 @@ type SelectedCategoryType = {
   setSelectedCategory: (selected: string) => void;
 };
 
-const initialValue = { selectedCategory: "all", setSelectedCategory: () => {} };
+const initialValue = { selectedCategory: "All", setSelectedCategory: () => {} };
 
 export const SelectedCategory =
   createContext<SelectedCategoryType>(initialValue);
