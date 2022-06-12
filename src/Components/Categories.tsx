@@ -26,7 +26,7 @@ export const Categories = () => {
   }, []);
 
   return (
-    <section className="flex flex-col gap-4 text-3xl px-10 pt-44">
+    <section className="flex flex-col gap-4 text-lg px-10 pt-44">
       <Category key="all">All</Category>
       {categories &&
         categories.map(({ uuid, name }) => (
