@@ -8,6 +8,7 @@ In this project, I learned how to use the Supabase API I was fascinated by its s
 
 - Vite
 - Typescript
+- Context API
 - React
 - TailwindCSS
 - Supabase API
