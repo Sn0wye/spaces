@@ -1,23 +1,24 @@
 import { useLayoutEffect, useState } from "react";
 import { supabase } from "../Services/supabase";
 import { Category } from "./Category";
+import { removeArrayElementDuplicates } from "../Utils/utils";
 
 type Category = {
-  uuid: string;
-  name: string;
+  id: string;
+  category: string;
 };
 
 export const Categories = () => {
   const [categories, setCategories] = useState<Category[] | null>([]);
 
   async function fetchData() {
-    try {
-      const { data, error } = await supabase.from("Categories").select("*");
-      if (error) throw error;
+    const { data, error } = await supabase.from("Todos").select("category");
+    if (error) console.error(error);
+    if (data) {
       console.log(data);
-      setCategories(data);
-    } catch (error) {
-      console.log(error);
+      const uniqueArray = removeArrayElementDuplicates(data, "category");
+      console.log(uniqueArray);
+      setCategories(uniqueArray);
     }
   }
 
@@ -28,10 +29,9 @@ export const Categories = () => {
   return (
     <section className="flex flex-col gap-4 text-lg px-10 pt-44">
       <Category key="all">All</Category>
-      {categories &&
-        categories.map(({ uuid, name }) => (
-          <Category key={uuid}>{name}</Category>
-        ))}
+      {categories?.map(({ id, category }) => (
+        <Category key={id}>{category}</Category>
+      ))}
     </section>
   );
 };
