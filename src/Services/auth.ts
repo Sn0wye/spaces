@@ -3,19 +3,33 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 export function signInWithGoogle() {
-  signInWithPopup(auth, provider)
+  signInWithPopup(auth, googleProvider)
     .then((response) => {
       localStorage.setItem("user", response.user.uid);
     })
     .catch((error) => {
       alert(error);
     });
+}
+
+export function signInWithGithub() {
+  signInWithRedirect(auth, githubProvider);
+}
+
+export function getGithubUser() {
+  getRedirectResult(auth).then((result) => {
+    console.log(result);
+  });
 }
 
 export function signIn(email: string, password: string) {
