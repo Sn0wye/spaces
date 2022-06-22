@@ -1,20 +1,20 @@
 import { Moon, Sun } from "./IconComponents";
 import { useContext } from "react";
 import { SelectedCategory } from "../Contexts/SelectedCategory";
-import { Theme } from "../Contexts/Theme";
+import { useTheme } from "../Contexts/Theme";
 import { capitalizeFirstLetter } from "../Utils/utils";
 
 export default function Header() {
   const { selectedCategory } = useContext(SelectedCategory);
-  const { theme, setTheme } = useContext(Theme);
+  const { theme, toggleTheme } = useTheme();
 
   function handleThemeToggle() {
     if (theme === "light") {
-      setTheme("dark");
+      toggleTheme("dark");
       return;
     }
     if (theme === "dark") {
-      setTheme("light");
+      toggleTheme("light");
     }
   }
 

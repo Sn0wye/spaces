@@ -1,23 +1,48 @@
-import { createContext, ReactNode, useState } from "react";
-import { verifyTheme } from "../Utils/colorScheme";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 type ThemeProps = {
   children: ReactNode;
 };
 
 type ThemeType = {
-  theme: string;
-  setTheme: (theme: string) => void;
+  theme: Theme;
+  toggleTheme: (theme: Theme) => void;
 };
 
-const initialValue = { theme: verifyTheme(), setTheme: () => {} };
+type Theme = "dark" | "light";
 
-export const Theme = createContext<ThemeType>(initialValue);
+export const Theme = createContext<ThemeType>({} as ThemeType);
 
 export function ThemeProvider({ children }: ThemeProps) {
-  const [theme, setTheme] = useState(initialValue.theme);
+  const [theme, setTheme] = useState<Theme>("dark");
+
+  const toggleTheme = (theme: Theme) => {
+    setTheme(theme);
+    localStorage.setItem("theme", theme);
+  };
+
+  useEffect(() => {
+    const actualTheme = localStorage.getItem("theme");
+
+    if (!actualTheme) {
+      toggleTheme("dark");
+      return;
+    }
+
+    setTheme(actualTheme as Theme);
+  }, []);
 
   return (
-    <Theme.Provider value={{ theme, setTheme }}>{children}</Theme.Provider>
+    <Theme.Provider value={{ theme, toggleTheme }}>{children}</Theme.Provider>
   );
 }
+export const useTheme = () => {
+  const context = useContext(Theme);
+  return context;
+};
