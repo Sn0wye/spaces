@@ -1,13 +1,12 @@
-import { ReactNode, useContext } from "react";
-import { SelectedCategory } from "../Contexts/SelectedCategory";
+import { ReactNode } from "react";
+import { useSelectedCategory } from "../Contexts/SelectedCategory";
 
 type Props = {
   children: ReactNode;
 };
 
 export const Category = ({ children }: Props) => {
-  const { selectedCategory, setSelectedCategory } =
-    useContext(SelectedCategory);
+  const { selectedCategory, setSelectedCategory } = useSelectedCategory();
   return (
     <h1
       className={

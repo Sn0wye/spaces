@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 type SelectedCategoryProps = {
   children: ReactNode;
@@ -27,3 +27,7 @@ export function SelectedCategoryProvider({ children }: SelectedCategoryProps) {
     </SelectedCategory.Provider>
   );
 }
+
+export const useSelectedCategory = () => {
+  return useContext(SelectedCategory);
+};

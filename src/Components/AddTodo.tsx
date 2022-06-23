@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, useContext } from "react";
-import { SelectedCategory } from "../Contexts/SelectedCategory";
+import { ChangeEvent, FormEvent } from "react";
+import { useSelectedCategory } from "../Contexts/SelectedCategory";
 import { capitalizeFirstLetter } from "../Utils/utils";
 
 type AddTodoProps = {
@@ -13,7 +13,7 @@ export const AddTodo = ({
   handleChange,
   handleSubmitTodo,
 }: AddTodoProps) => {
-  const { selectedCategory } = useContext(SelectedCategory);
+  const { selectedCategory } = useSelectedCategory();
 
   return (
     <form

@@ -1,12 +1,13 @@
 import { Moon, Sun } from "./IconComponents";
-import { useContext } from "react";
-import { SelectedCategory } from "../Contexts/SelectedCategory";
+import { useSelectedCategory } from "../Contexts/SelectedCategory";
 import { useTheme } from "../Contexts/Theme";
 import { capitalizeFirstLetter } from "../Utils/utils";
+import { useAuth } from "../Contexts/AuthContext";
 
 export default function Header() {
-  const { selectedCategory } = useContext(SelectedCategory);
+  const { selectedCategory } = useSelectedCategory();
   const { theme, toggleTheme } = useTheme();
+  const { signInWithGoogle } = useAuth();
 
   function handleThemeToggle() {
     if (theme === "light") {
@@ -27,7 +28,7 @@ export default function Header() {
       </h1>
       <button
         className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
-        onClick={handleThemeToggle}
+        onClick={signInWithGoogle}
         aria-label="Toggle Theme"
       >
         {theme === "dark" ? (
