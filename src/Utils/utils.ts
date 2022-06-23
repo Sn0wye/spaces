@@ -1,3 +1,5 @@
+import { UserCredential } from "firebase/auth";
+
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -12,4 +14,14 @@ function removeArrayElementDuplicates(array: any[], prop: string) {
   return unique;
 }
 
-export { capitalizeFirstLetter, removeArrayElementDuplicates };
+function parseUser(userCred: UserCredential) {
+  const { user } = userCred;
+  const parsedUser = {
+    name: user.displayName,
+    avatar: user.photoURL,
+    uid: user.uid,
+  };
+  return parsedUser;
+}
+
+export { capitalizeFirstLetter, removeArrayElementDuplicates, parseUser };
