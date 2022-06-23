@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
+  signOut,
   UserCredential,
 } from "firebase/auth";
 import { createContext, ReactNode, useContext, useState } from "react";
@@ -31,6 +32,7 @@ type AuthContextType = {
     email: string,
     password: string
   ) => Promise<void>;
+  logOut: () => Promise<void>;
 };
 
 export const AuthContext = createContext<AuthContextType>(
@@ -71,9 +73,20 @@ export function AuthProvider({ children }: AuthProps) {
     setUser(parsedUser);
   }
 
+  const logOut = async () => {
+    await signOut(auth);
+    setUser(null);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, signIn, signInWithGoogle, signUpWithEmailAndPassword }}
+      value={{
+        user,
+        signIn,
+        signInWithGoogle,
+        signUpWithEmailAndPassword,
+        logOut,
+      }}
     >
       {children}
     </AuthContext.Provider>
@@ -81,6 +94,5 @@ export function AuthProvider({ children }: AuthProps) {
 }
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
-  return context;
+  return useContext(AuthContext);
 };
