@@ -1,9 +1,9 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Theme } from "../../Contexts/Theme";
-import { signUp, signInWithGoogle } from "../../Services/auth";
 import { FieldValues, useForm } from "react-hook-form";
 import { Email, EyeVisible, Google, Password, User } from "../IconComponents";
+import { useTheme } from "../../Contexts/Theme";
+import { useAuth } from "../../Contexts/AuthContext";
 
 type Props = {
   isModalOpen: boolean;
@@ -11,7 +11,9 @@ type Props = {
 };
 
 export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
-  const { theme } = useContext(Theme);
+  const { theme } = useTheme();
+  const { signUpWithEmailAndPassword, signInWithGoogle } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -19,8 +21,8 @@ export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
   } = useForm();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  function onSubmit({ email, password }: FieldValues) {
-    signUp(email, password);
+  function onSubmit({ email, password, displayName }: FieldValues) {
+    signUpWithEmailAndPassword(email, password, displayName);
   }
 
   function toggleShowPassword() {
