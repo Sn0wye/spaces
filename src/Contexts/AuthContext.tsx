@@ -3,13 +3,14 @@ import {
   getRedirectResult,
   GithubAuthProvider,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
   signOut,
   UserCredential,
 } from "firebase/auth";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { auth } from "../Services/firebase";
 import { parseUser } from "../Utils/utils";
 
@@ -42,6 +43,20 @@ export const AuthContext = createContext<AuthContextType>(
 
 export function AuthProvider({ children }: AuthProps) {
   const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { displayName, photoURL, uid } = user;
+        setUser({
+          name: displayName,
+          avatar: photoURL,
+          uid: uid,
+        });
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
