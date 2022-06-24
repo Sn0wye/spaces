@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import spacesImg from "../assets/icons/SpacesLogo.svg";
+import { SignUpModal } from "../Components/Modals/SignUpModal";
 
 export function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleToggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
   return (
     <>
       <div className="w-screen h-screen bg-gradient-to-b from-brand to-[#5C4BC5] flex flex-col items-center">
@@ -10,7 +16,7 @@ export function Home() {
           <img
             src={spacesImg}
             alt="Spaces logo Image"
-            className="max-w-56 relative -top-20 z-20"
+            className="max-w-56 relative -top-20"
           />
         </main>
         <p className="text-white text-center text-2xl">
@@ -18,10 +24,17 @@ export function Home() {
           <br />
           <u>tasks done</u> best.
         </p>
-        <button className="mt-12 py-6 px-12 border-2 border-white bg-transparent text-white rounded-lg">
+        <button
+          onClick={handleToggleModal}
+          className="mt-12 py-6 px-12 border-2 border-white bg-transparent text-white rounded-lg"
+        >
           GET STARTED
         </button>
       </div>
+      <SignUpModal
+        isModalOpen={isModalOpen}
+        handleToggleModal={handleToggleModal}
+      />
     </>
   );
 }
