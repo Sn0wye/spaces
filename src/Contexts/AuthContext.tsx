@@ -30,7 +30,8 @@ type AuthContextType = {
   signIn: (email: string, password: string) => Promise<void>;
   signUpWithEmailAndPassword: (
     email: string,
-    password: string
+    password: string,
+    displayName: string
   ) => Promise<void>;
   logOut: () => Promise<void>;
 };
@@ -67,9 +68,17 @@ export function AuthProvider({ children }: AuthProps) {
     setUser(parsedUser);
   }
 
-  async function signUpWithEmailAndPassword(email: string, password: string) {
+  async function signUpWithEmailAndPassword(
+    email: string,
+    password: string,
+    displayName: string
+  ) {
     const user = await createUserWithEmailAndPassword(auth, email, password);
-    const parsedUser = parseUser(user);
+    const parsedUser = {
+      name: displayName,
+      avatar: null,
+      uid: user.user.uid,
+    };
     setUser(parsedUser);
   }
 
