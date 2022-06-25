@@ -9,5 +9,9 @@ type IsAuthenticatedProps = {
 
 export default function IsAuthenticated({ children }: IsAuthenticatedProps) {
   const { user } = useAuth();
-  return <>{user ? <TodoApp /> : <Home />}</>;
+  return (
+    <>
+      {user ? children : <Home />}
+    </>
+  )
 }
