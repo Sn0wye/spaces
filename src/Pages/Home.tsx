@@ -10,8 +10,8 @@ export function Home() {
   };
   return (
     <>
-      <div className="w-screen h-screen bg-gradient-to-b from-brand to-[#5C4BC5] flex flex-col items-center">
-        <main className="flex flex-col items-center mt-48">
+      <div className="w-full h-screen bg-gradient-to-b from-brand to-[#5C4BC5] flex flex-col items-center justify-center">
+        <main className="flex flex-col items-center">
           <h1 className="font-bold text-9xl text-white">Spaces</h1>
           <img
             src={spacesImg}
