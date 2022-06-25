@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../Services/supabase";
 import { Category } from "./Category";
 import { removeArrayElementDuplicates } from "../Utils/utils";
@@ -22,7 +22,7 @@ export const Categories = () => {
     }
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
