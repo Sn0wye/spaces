@@ -9,16 +9,16 @@ import {
   signInWithRedirect,
   signOut,
   UserCredential,
-} from "firebase/auth";
+} from 'firebase/auth';
 import {
   createContext,
   ReactNode,
   useContext,
   useEffect,
   useState,
-} from "react";
-import { auth } from "../lib/firebase";
-import { parseUser } from "../helpers/utils";
+} from 'react';
+import { auth } from '../lib/firebase';
+import { parseUser } from '../helpers/utils';
 
 type AuthProps = {
   children: ReactNode;

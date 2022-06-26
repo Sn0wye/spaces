@@ -1,7 +1,7 @@
-import { Pencil, Trash } from "./IconComponents";
-import { useState } from "react";
-import { Todo } from "../types/todo";
-import EditTodoModal from "./Modals/EditTodoModal";
+import { Pencil, Trash } from './IconComponents';
+import { useState } from 'react';
+import { Todo } from '../types/todo';
+import EditTodoModal from './Modals/EditTodoModal';
 
 type TodoProps = {
   todo: Todo;
@@ -24,36 +24,36 @@ export const TodoRow = ({
 
   return (
     <>
-      <div className="flex items-center mb-6 justify-between">
-        <div className="flex items-center gap-6">
+      <div className='flex items-center mb-6 justify-between'>
+        <div className='flex items-center gap-6'>
           <input
-            type="checkbox"
+            type='checkbox'
             checked={isCompleted}
-            className="w-9 h-9 border-brand rounded-xl checked:bg-brand dark:bg-zinc-800 dark:checked:bg-brand focus:ring-brand"
+            className='w-9 h-9 border-brand rounded-xl checked:bg-brand dark:bg-zinc-800 dark:checked:bg-brand focus:ring-brand'
             onChange={() => handleCheckTodo(id)}
           />
           <p
             className={`text-2xl font-regular ${
-              isCompleted ? "line-through" : ""
+              isCompleted ? 'line-through' : ''
             }`}
           >
             {task}
           </p>
         </div>
-        <div className="flex gap-6">
+        <div className='flex gap-6'>
           <button
-            aria-label="Update a todo"
+            aria-label='Update a todo'
             onClick={handleToggleModal}
-            className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
+            className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors'
           >
-            <Pencil className="text-brand text-2xl" />
+            <Pencil className='text-brand text-2xl' />
           </button>
           <button
-            className="hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors"
-            aria-label="Delete a todo"
+            className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-full p-2 transition-colors'
+            aria-label='Delete a todo'
             onClick={() => handleDeleteTodo(id)}
           >
-            <Trash className=" text-brand text-2xl" />
+            <Trash className=' text-brand text-2xl' />
           </button>
         </div>
       </div>

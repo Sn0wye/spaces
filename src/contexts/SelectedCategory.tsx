@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from 'react';
 
 type SelectedCategoryProps = {
   children: ReactNode;
@@ -9,7 +9,7 @@ type SelectedCategoryType = {
   setSelectedCategory: (selected: string) => void;
 };
 
-const initialValue = { selectedCategory: "All", setSelectedCategory: () => {} };
+const initialValue = { selectedCategory: 'All', setSelectedCategory: () => {} };
 
 export const SelectedCategory =
   createContext<SelectedCategoryType>(initialValue);

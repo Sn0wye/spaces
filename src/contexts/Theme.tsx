@@ -4,7 +4,7 @@ import {
   useContext,
   useEffect,
   useState,
-} from "react";
+} from 'react';
 
 type ThemeProps = {
   children: ReactNode;
@@ -15,23 +15,23 @@ type ThemeType = {
   toggleTheme: (theme: Theme) => void;
 };
 
-type Theme = "dark" | "light";
+type Theme = 'dark' | 'light';
 
 export const Theme = createContext<ThemeType>({} as ThemeType);
 
 export function ThemeProvider({ children }: ThemeProps) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>('dark');
 
   const toggleTheme = (theme: Theme) => {
     setTheme(theme);
-    localStorage.setItem("theme", theme);
+    localStorage.setItem('theme', theme);
   };
 
   useEffect(() => {
-    const actualTheme = localStorage.getItem("theme");
+    const actualTheme = localStorage.getItem('theme');
 
     if (!actualTheme) {
-      toggleTheme("dark");
+      toggleTheme('dark');
       return;
     }
 

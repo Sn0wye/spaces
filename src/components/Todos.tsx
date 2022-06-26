@@ -1,12 +1,12 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { v4 as uuid } from "uuid";
-import { TodoRow } from "./TodoRow";
-import { Todo } from "../types/todo";
-import { AddTodo } from "./AddTodo";
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { v4 as uuid } from 'uuid';
+import { TodoRow } from './TodoRow';
+import { Todo } from '../types/todo';
+import { AddTodo } from './AddTodo';
 
 export const Todos = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState('');
   const todosLength = todos.length;
   const hasTodos = todos.length > 0;
   const remainingTodos = todos.filter((todo) => !todo.isCompleted).length;
@@ -14,7 +14,7 @@ export const Todos = () => {
   function handleAddTodo(todo: Todo) {
     const updatedTodos = [...todos, todo];
     setTodos(updatedTodos);
-    setTask("");
+    setTask('');
   }
 
   function handleChange(e: ChangeEvent) {
@@ -65,13 +65,13 @@ export const Todos = () => {
   }
 
   return (
-    <div className="w-full h-fit">
+    <div className='w-full h-fit'>
       <AddTodo
         task={task}
         handleChange={handleChange}
         handleSubmitTodo={handleSubmitTodo}
       />
-      <div className="" />
+      <div className='' />
       {todos.map((todo) => (
         <TodoRow
           key={todo.id}
@@ -83,7 +83,7 @@ export const Todos = () => {
       ))}
 
       {hasTodos ? (
-        <p className="mb-5 text-xl text-red-500 uppercase">{`[${remainingTodos} of ${todosLength}] todos remaining`}</p>
+        <p className='mb-5 text-xl text-red-500 uppercase'>{`[${remainingTodos} of ${todosLength}] todos remaining`}</p>
       ) : (
         <p>Please Add a Todo!</p>
       )}

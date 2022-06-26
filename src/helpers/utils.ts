@@ -1,4 +1,4 @@
-import { UserCredential } from "firebase/auth";
+import { UserCredential } from 'firebase/auth';
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
