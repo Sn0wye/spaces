@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../Services/supabase";
+import { supabase } from "../lib/supabase";
 import { Category } from "./Category";
-import { removeArrayElementDuplicates } from "../Utils/utils";
+import { removeArrayElementDuplicates } from "../helpers/utils";
 
 type Category = {
   id: string;

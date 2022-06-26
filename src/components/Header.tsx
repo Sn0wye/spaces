@@ -1,7 +1,7 @@
 import { Moon, Sun } from "./IconComponents";
-import { useSelectedCategory } from "../Contexts/SelectedCategory";
-import { useTheme } from "../Contexts/Theme";
-import { capitalizeFirstLetter } from "../Utils/utils";
+import { useSelectedCategory } from "../contexts/SelectedCategory";
+import { useTheme } from "../contexts/Theme";
+import { capitalizeFirstLetter } from "../helpers/utils";
 
 export default function Header() {
   const { selectedCategory } = useSelectedCategory();

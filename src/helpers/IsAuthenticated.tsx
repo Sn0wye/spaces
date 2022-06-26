@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
-import { useAuth } from "../Contexts/AuthContext";
-import { Home } from "../Pages/Home";
-import { TodoApp } from "../Pages/TodoApp";
+import { useAuth } from "../contexts/AuthContext";
+import { Home } from "../pages/Home";
+import { TodoApp } from "../pages/TodoApp";
 
 type IsAuthenticatedProps = {
   children: ReactNode;
@@ -9,9 +9,5 @@ type IsAuthenticatedProps = {
 
 export default function IsAuthenticated({ children }: IsAuthenticatedProps) {
   const { user } = useAuth();
-  return (
-    <>
-      {user ? children : <Home />}
-    </>
-  )
+  return <>{user ? children : <Home />}</>;
 }

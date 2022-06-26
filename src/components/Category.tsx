@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useSelectedCategory } from "../Contexts/SelectedCategory";
+import { useSelectedCategory } from "../contexts/SelectedCategory";
 
 type Props = {
   children: ReactNode;

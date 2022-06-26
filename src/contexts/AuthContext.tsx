@@ -10,9 +10,15 @@ import {
   signOut,
   UserCredential,
 } from "firebase/auth";
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { auth } from "../Services/firebase";
-import { parseUser } from "../Utils/utils";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { auth } from "../lib/firebase";
+import { parseUser } from "../helpers/utils";
 
 type AuthProps = {
   children: ReactNode;

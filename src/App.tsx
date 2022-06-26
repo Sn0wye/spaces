@@ -1,6 +1,6 @@
-import { AuthProvider } from "./Contexts/AuthContext";
-import IsAuthenticated from "./Helpers/IsAuthenticated";
-import { TodoApp } from "./Pages/TodoApp";
+import { AuthProvider } from "./contexts/AuthContext";
+import IsAuthenticated from "./helpers/IsAuthenticated";
+import { TodoApp } from "./pages/TodoApp";
 
 function App() {
   return (

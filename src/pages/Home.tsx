@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import spacesImg from "../assets/icons/SpacesLogo.svg";
-import { SignUpModal } from "../Components/Modals/SignUpModal";
+import { SignUpModal } from "../components/Modals/SignUpModal";
 
 export function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);

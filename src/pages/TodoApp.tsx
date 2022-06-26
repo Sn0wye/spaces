@@ -1,9 +1,9 @@
 import React from "react";
-import { Categories } from "../Components/Categories";
-import Header from "../Components/Header";
-import { Todos } from "../Components/Todos";
-import { SelectedCategoryProvider } from "../Contexts/SelectedCategory";
-import { useTheme } from "../Contexts/Theme";
+import { Categories } from "../components/Categories";
+import Header from "../components/Header";
+import { Todos } from "../components/Todos";
+import { SelectedCategoryProvider } from "../contexts/SelectedCategory";
+import { useTheme } from "../contexts/Theme";
 
 export function TodoApp() {
   const { theme } = useTheme();

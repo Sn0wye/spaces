@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent } from "react";
-import { useSelectedCategory } from "../Contexts/SelectedCategory";
-import { capitalizeFirstLetter } from "../Utils/utils";
+import { useSelectedCategory } from "../contexts/SelectedCategory";
+import { capitalizeFirstLetter } from "../helpers/utils";
 
 type AddTodoProps = {
   task: string;
