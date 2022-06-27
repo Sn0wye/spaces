@@ -1,6 +1,7 @@
 export type Todo = {
   id: string;
-  task: string;
+  description: string;
   isCompleted: boolean;
-  category?: string;
+  category: string | null;
+  author: string;
 };
