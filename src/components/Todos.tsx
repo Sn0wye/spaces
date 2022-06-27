@@ -3,90 +3,23 @@ import { v4 as uuid } from 'uuid';
 import { TodoRow } from './TodoRow';
 import { Todo } from '../types/todo';
 import { AddTodo } from './AddTodo';
+import { useTodo } from '../contexts/Todos';
 
 export const Todos = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [task, setTask] = useState('');
-  const todosLength = todos.length;
-  const hasTodos = todos.length > 0;
-  const remainingTodos = todos.filter((todo) => !todo.isCompleted).length;
-
-  function handleAddTodo(todo: Todo) {
-    const updatedTodos = [...todos, todo];
-    setTodos(updatedTodos);
-    setTask('');
-  }
-
-  function handleChange(e: ChangeEvent) {
-    const { value } = e.target as HTMLInputElement;
-    setTask(value);
-  }
-
-  function handleSubmitTodo(e: FormEvent) {
-    e.preventDefault();
-
-    const todo = {
-      id: uuid(),
-      task,
-      isCompleted: false,
-    };
-    task && handleAddTodo(todo);
-  }
-
-  function handleDeleteTodo(id: string) {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
-  }
-
-  function handleCheckTodo(id: string) {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          isCompleted: !todo.isCompleted,
-        };
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-  }
-
-  function handleUpdateTodo(id: string, newTask: string) {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          task: newTask,
-        };
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-  }
-
+  const { todos, deleteTodo, updateTodo, handleCheckTodo } = useTodo();
   return (
     <div className='w-full h-fit'>
-      <AddTodo
-        task={task}
-        handleChange={handleChange}
-        handleSubmitTodo={handleSubmitTodo}
-      />
+      <AddTodo />
       <div className='' />
-      {todos.map((todo) => (
+      {todos?.map((todo: Todo) => (
         <TodoRow
           key={todo.id}
           todo={todo}
-          handleDeleteTodo={handleDeleteTodo}
+          handleDeleteTodo={deleteTodo}
           handleCheckTodo={handleCheckTodo}
-          handleUpdateTodo={handleUpdateTodo}
+          handleUpdateTodo={updateTodo}
         />
       ))}
-
-      {hasTodos ? (
-        <p className='mb-5 text-xl text-red-500 uppercase'>{`[${remainingTodos} of ${todosLength}] todos remaining`}</p>
-      ) : (
-        <p>Please Add a Todo!</p>
-      )}
     </div>
   );
 };
