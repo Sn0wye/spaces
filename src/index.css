@@ -12,3 +12,7 @@ body {
   padding: 0;
   list-style: none;
 }
+
+.popover-icon {
+  @apply p-2 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600 w-full;
+}

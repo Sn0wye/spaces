@@ -2,7 +2,7 @@ import { Moon, Sun } from './IconComponents';
 import { useTheme } from '../contexts/Theme';
 import SpacesLogo from '../assets/icons/SpacesLogo.svg';
 import { useAuth } from '../contexts/AuthContext';
-import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { Popover } from '@headlessui/react';
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -36,20 +36,19 @@ export function Navbar() {
             <Moon className='text-brand text-3xl' />
           )}
         </button>
-        <Menu>
-          <MenuButton
-            as={Button}
-            rightIcon={
-              <img
-                className='w-8 h-8 rounded-full'
-                src={user?.avatar || undefined}
-              />
-            }
-          />
-          <MenuList className='bg-zinc-700 p-4 rounded-md'>
-            <MenuItem onClick={logOut}>Disconnect</MenuItem>
-          </MenuList>
-        </Menu>
+        <Popover className='relative'>
+          <Popover.Button>
+            <img
+              className='w-8 h-8 rounded-full'
+              src={user?.avatar || undefined}
+            />
+          </Popover.Button>
+          <Popover.Panel className='absolute bg-zinc-100 dark:bg-zinc-700 rounded-md top-8 right-0 md:top-10 z-10 h-fit flex flex-col items-center p-1'>
+            <button onClick={logOut} className='popover-icon'>
+              Disconnect
+            </button>
+          </Popover.Panel>
+        </Popover>
       </div>
     </nav>
   );
