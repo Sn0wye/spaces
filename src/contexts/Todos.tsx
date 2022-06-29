@@ -5,9 +5,11 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { removeArrayElementDuplicates } from '../helpers/utils';
 import { supabase } from '../lib/supabase';
+import { Category } from '../types/category';
 import { Todo } from '../types/todo';
-import { useAuth } from './AuthContext';
+import { useAuth, User } from './AuthContext';
 
 type TodoContextProps = {
   children: ReactNode;
@@ -15,6 +17,7 @@ type TodoContextProps = {
 
 type TodoContextType = {
   todos: Todo[];
+  categories: Category[];
   addTodo: (todo: Todo) => void;
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, newTodoDescription: string) => void;
@@ -27,30 +30,39 @@ export const TodoContext = createContext<TodoContextType>(
 
 export const TodoProvider = ({ children }: TodoContextProps) => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const { user } = useAuth();
 
   useEffect(() => {
-    fetchData();
+    if (!user) return;
+    fetchTodos(user);
+    filterTodoCategories();
 
     const eventListener = supabase
       .from('Todos')
-      .on('*', (payload) => {
-        fetchData();
+      .on('*', async (payload) => {
+        await fetchTodos(user);
+        console.log(payload);
       })
       .subscribe();
-
     return () => {
-      eventListener.unsubscribe();
+      supabase.removeSubscription(eventListener);
     };
-  }, []);
+  }, [user]);
 
-  const fetchData = async () => {
+  const fetchTodos = async (user: User) => {
     const { data, error } = await supabase
       .from('Todos')
       .select('*')
-      .eq('author', user?.uid);
+      .eq('author', user.uid);
     if (error) throw new Error(error.message);
     setTodos(data);
+  };
+
+  const filterTodoCategories = () => {
+    const uniqueArray = removeArrayElementDuplicates(todos, 'category');
+    uniqueArray.filter((category) => category.category !== 'all');
+    setCategories(uniqueArray);
   };
 
   async function addTodo(todo: Todo) {
@@ -88,20 +100,26 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
     if (data?.[0]?.isCompleted) {
       const { error } = await supabase
         .from('Todos')
-        .update({ isCompleted: false });
-      return;
-    }
-    if (data?.[0]?.isCompleted === false) {
+        .update({ isCompleted: false })
+        .eq('id', id);
+    } else {
       const { error } = await supabase
         .from('Todos')
-        .update({ isCompleted: true });
-      return;
+        .update({ isCompleted: true })
+        .eq('id', id);
     }
   }
 
   return (
     <TodoContext.Provider
-      value={{ todos, addTodo, deleteTodo, updateTodo, handleCheckTodo }}
+      value={{
+        todos,
+        categories,
+        addTodo,
+        deleteTodo,
+        updateTodo,
+        handleCheckTodo,
+      }}
     >
       {children}
     </TodoContext.Provider>
