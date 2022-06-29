@@ -8,18 +8,20 @@ import { useTodo } from '../contexts/Todos';
 export const Todos = () => {
   const { todos, deleteTodo, updateTodo, handleCheckTodo } = useTodo();
   return (
-    <div className='w-full h-fit'>
+    <>
       <AddTodo />
-      <div className='' />
-      {todos?.map((todo: Todo) => (
-        <TodoRow
-          key={todo.id}
-          todo={todo}
-          handleDeleteTodo={deleteTodo}
-          handleCheckTodo={handleCheckTodo}
-          handleUpdateTodo={updateTodo}
-        />
-      ))}
-    </div>
+      <div className='w-full h-fit'>
+        <div className='' />
+        {todos?.map((todo: Todo) => (
+          <TodoRow
+            key={todo.id}
+            todo={todo}
+            handleDeleteTodo={deleteTodo}
+            handleCheckTodo={handleCheckTodo}
+            handleUpdateTodo={updateTodo}
+          />
+        ))}
+      </div>
+    </>
   );
 };

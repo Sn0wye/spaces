@@ -1,12 +1,10 @@
 import { Moon, Sun } from './IconComponents';
-import { useSelectedCategory } from '../contexts/SelectedCategory';
 import { useTheme } from '../contexts/Theme';
-import { capitalizeFirstLetter } from '../helpers/utils';
+import SpacesLogo from '../assets/icons/SpacesLogo.svg';
 import { useAuth } from '../contexts/AuthContext';
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
 export default function Header() {
-  const { selectedCategory } = useSelectedCategory();
   const { theme, toggleTheme } = useTheme();
   const { user, logOut } = useAuth();
 
@@ -22,11 +20,10 @@ export default function Header() {
 
   return (
     <header className='flex items-center justify-between pt-4'>
-      <h1 className='text-5xl font-bold'>
-        {selectedCategory === 'all'
-          ? 'All Tasks'
-          : capitalizeFirstLetter(selectedCategory)}
-      </h1>
+      <div className='flex items-center gap-2'>
+        <img src={SpacesLogo} alt='Spaces Logo' className='w-12' />
+        <h1 className='text-5xl font-bold'>Spaces</h1>
+      </div>
       <div className='ml-auto flex items-center gap-2'>
         <button
           className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg p-2 transition-colors duration-300'

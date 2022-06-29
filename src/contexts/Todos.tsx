@@ -7,7 +7,6 @@ import {
 } from 'react';
 import { removeArrayElementDuplicates } from '../helpers/utils';
 import { supabase } from '../lib/supabase';
-import { Category } from '../types/category';
 import { Todo } from '../types/todo';
 import { useAuth, User } from './AuthContext';
 
@@ -17,7 +16,6 @@ type TodoContextProps = {
 
 type TodoContextType = {
   todos: Todo[];
-  categories: Category[];
   addTodo: (todo: Todo) => void;
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, newTodoDescription: string) => void;
@@ -30,13 +28,11 @@ export const TodoContext = createContext<TodoContextType>(
 
 export const TodoProvider = ({ children }: TodoContextProps) => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
   const { user } = useAuth();
 
   useEffect(() => {
     if (!user) return;
     fetchTodos(user);
-    filterTodoCategories();
 
     const eventListener = supabase
       .from('Todos')
@@ -59,12 +55,6 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
     setTodos(data);
   };
 
-  const filterTodoCategories = () => {
-    const uniqueArray = removeArrayElementDuplicates(todos, 'category');
-    uniqueArray.filter((category) => category.category !== 'all');
-    setCategories(uniqueArray);
-  };
-
   async function addTodo(todo: Todo) {
     const { error } = await supabase.from('Todos').insert([
       {
@@ -72,7 +62,6 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
         description: todo.description,
         isCompleted: todo.isCompleted,
         author: todo.author,
-        category: todo.category,
       },
     ]);
     if (error) throw new Error(error.message);
@@ -114,7 +103,6 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
     <TodoContext.Provider
       value={{
         todos,
-        categories,
         addTodo,
         deleteTodo,
         updateTodo,
