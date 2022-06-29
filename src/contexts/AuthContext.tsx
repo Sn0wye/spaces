@@ -24,7 +24,7 @@ type AuthProps = {
   children: ReactNode;
 };
 
-type User = {
+export type User = {
   name: string | null;
   avatar: string | null;
   uid: string;
