@@ -8,7 +8,7 @@ import { useTodo } from '../contexts/Todos';
 export const Todos = () => {
   const { todos, deleteTodo, updateTodo, handleCheckTodo } = useTodo();
   return (
-    <>
+    <section className='px-2 md:px-8 w-full'>
       <AddTodo />
       <div className='w-full h-fit'>
         <div className='' />
@@ -22,6 +22,6 @@ export const Todos = () => {
           />
         ))}
       </div>
-    </>
+    </section>
   );
 };

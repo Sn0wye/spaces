@@ -40,7 +40,7 @@ const EditTodoModal = ({
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'
         >
-          <Dialog.Panel className='w-full h-full max-w-md max-h-72 bg-white dark:bg-zinc-800 rounded-xl flex flex-col justify-center items-center'>
+          <Dialog.Panel className='w-full h-fit max-w-sm bg-white dark:bg-zinc-800 rounded-md p-4 flex flex-col justify-center items-center'>
             <Dialog.Title className='font-bold text-black dark:text-white text-2xl'>
               Update Todo Info
             </Dialog.Title>
@@ -53,7 +53,7 @@ const EditTodoModal = ({
               />
               <button
                 type='submit'
-                className='text-white font-bold rounded-xl bg-brand p-4 w-20 h-10 flex justify-center items-center mt-4 hover:bg-brand-light transition-colors'
+                className='text-white font-bold rounded-xl bg-brand p-4 w-20 h-10 flex justify-center items-center mt-8 hover:bg-brand-light transition-colors shadow-md'
                 onClick={() => {
                   handleToggleModal();
                   handleUpdateTodo(todo.id, newTodoDescription);
