@@ -4,7 +4,7 @@ import SpacesLogo from '../assets/icons/SpacesLogo.svg';
 import { useAuth } from '../contexts/AuthContext';
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
-export default function Header() {
+export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const { user, logOut } = useAuth();
 
@@ -19,7 +19,7 @@ export default function Header() {
   }
 
   return (
-    <header className='flex items-center justify-between pt-4'>
+    <nav className='flex items-center justify-between pt-4'>
       <div className='flex items-center gap-2'>
         <img src={SpacesLogo} alt='Spaces Logo' className='w-12' />
         <h1 className='text-5xl font-bold'>Spaces</h1>
@@ -51,6 +51,6 @@ export default function Header() {
           </MenuList>
         </Menu>
       </div>
-    </header>
+    </nav>
   );
 }
