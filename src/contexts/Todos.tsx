@@ -5,7 +5,6 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { removeArrayElementDuplicates } from '../helpers/utils';
 import { supabase } from '../lib/supabase';
 import { Todo } from '../types/todo';
 import { useAuth, User } from './AuthContext';

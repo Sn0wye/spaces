@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { capitalizeFirstLetter } from '../helpers/utils';
 import { v4 as uuid } from 'uuid';
 import { useTodo } from '../contexts/Todos';
 import { useAuth } from '../contexts/AuthContext';
