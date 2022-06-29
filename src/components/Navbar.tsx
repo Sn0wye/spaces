@@ -19,7 +19,7 @@ export function Navbar() {
   }
 
   return (
-    <nav className='flex items-center justify-between pt-4'>
+    <nav className='flex items-center justify-between p-4 shadow-xl'>
       <div className='flex items-center gap-2'>
         <img src={SpacesLogo} alt='Spaces Logo' className='w-12' />
         <h1 className='text-5xl font-bold'>Spaces</h1>
