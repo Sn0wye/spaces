@@ -37,7 +37,6 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
       .from('Todos')
       .on('*', async (payload) => {
         await fetchTodos(user);
-        console.log(payload);
       })
       .subscribe();
     return () => {

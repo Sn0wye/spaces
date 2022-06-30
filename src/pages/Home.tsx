@@ -12,11 +12,11 @@ export function Home() {
     <>
       <div className='w-full h-screen bg-gradient-to-b from-brand to-[#5C4BC5] flex flex-col items-center justify-center'>
         <main className='flex flex-col items-center'>
-          <h1 className='font-bold text-9xl text-white'>Spaces</h1>
+          <h1 className='font-bold text-8xl md:text-9xl text-white'>Spaces</h1>
           <img
             src={spacesImg}
             alt='Spaces logo Image'
-            className='max-w-56 relative -top-20'
+            className='w-32 md:w-56 relative -top-16  md:-top-20'
           />
         </main>
         <p className='text-white text-center text-2xl'>
