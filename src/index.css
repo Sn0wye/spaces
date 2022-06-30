@@ -16,3 +16,24 @@ body {
 .popover-icon {
   @apply p-2 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600 w-full;
 }
+
+.between-lines::before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 0.5rem;
+  left: -6.5rem;
+  @apply bg-zinc-300 dark:bg-zinc-600;
+}
+.between-lines::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 0.5rem;
+  right: -6.5rem;
+  @apply bg-zinc-300 dark:bg-zinc-600;
+}

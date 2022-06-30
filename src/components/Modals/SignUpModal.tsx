@@ -1,9 +1,9 @@
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { FieldValues, useForm } from "react-hook-form";
-import { Email, EyeVisible, Google, Password, User } from "../IconComponents";
-import { useTheme } from "../../contexts/Theme";
-import { useAuth } from "../../contexts/AuthContext";
+import { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { FieldValues, useForm } from 'react-hook-form';
+import { Email, EyeVisible, Google, Password, User } from '../IconComponents';
+import { useTheme } from '../../contexts/Theme';
+import { useAuth } from '../../contexts/AuthContext';
 
 type Props = {
   isModalOpen: boolean;
@@ -36,100 +36,101 @@ export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
         onClose={() => {
           handleToggleModal();
         }}
-        className={`${theme === "dark" ? "dark" : ""}
+        className={`${theme === 'dark' ? 'dark' : ''}
         fixed inset-0 z-1 w-full h-screen bg-black bg-opacity-50 flex justify-center items-center select-none`}
       >
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
+          enter='ease-out duration-300'
+          enterFrom='opacity-0 scale-95'
+          enterTo='opacity-100 scale-100'
+          leave='ease-in duration-200'
+          leaveFrom='opacity-100 scale-100'
+          leaveTo='opacity-0 scale-95'
         >
-          <Dialog.Panel className="h-fit max-h-screen bg-white dark:bg-zinc-800 rounded-xl flex flex-col items-center font-inter px-24">
+          <Dialog.Panel className='h-fit max-h-screen bg-white dark:bg-zinc-800 rounded-md flex flex-col items-center font-inter px-12'>
             <header>
-              <h1 className="font-bold text-zinc-800 dark:text-zinc-100 text-[2.625rem] px-14 mt-12 mb-7">
+              <h1 className='font-bold text-zinc-800 dark:text-zinc-100 text-2xl px-7 mt-6 mb-6'>
                 Create Account
               </h1>
-              <span className="block h-1 w-full bg-zinc-300 dark:bg-zinc-600" />
+              <span className='block h-1 w-full bg-zinc-300 dark:bg-zinc-600' />
             </header>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col items-center mt-10 w-full"
+              className='flex flex-col items-center w-full'
             >
-              <label className="self-start text-zinc-800 dark:text-zinc-100 mb-2 font-light text-3xl">
+              <label className='self-start text-zinc-800 dark:text-zinc-100 mb-1 font-light mt-4'>
                 Display Name
               </label>
-              <div className="w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md">
-                <User className="ml-4 text-zinc-300 dark:text-zinc-600 text-4xl" />
+              <div className='w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md'>
+                <User className='ml-2 text-zinc-300 dark:text-zinc-600 text-2xl' />
                 <input
-                  type="text"
-                  className="p-3 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
-                  {...register("displayName", { required: true })}
+                  type='text'
+                  className='p-1 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-10 bg-transparent focus:outline-none focus:ring-transparent'
+                  {...register('displayName', { required: true })}
                 />
               </div>
               {errors.displayName && (
-                <span className="text-red-500 italic text-center mt-2">
+                <span className='text-red-500 italic text-center mt-1'>
                   Display Name is required.
                 </span>
               )}
-              <label className="self-start text-zinc-800 dark:text-zinc-100 mb-2 font-light text-3xl mt-16">
+              {/*  */}
+              <label className='self-start text-zinc-800 dark:text-zinc-100 mb-1 font-light mt-4'>
                 Email
               </label>
-              <div className="w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md">
-                <Email className="ml-4 text-zinc-300 dark:text-zinc-600 text-4xl" />
+              <div className='w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md'>
+                <Email className='ml-2 text-zinc-300 dark:text-zinc-600 text-2xl' />
                 <input
-                  type="email"
-                  className="p-3 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
-                  {...register("email", { required: true })}
+                  type='email'
+                  className='p-1 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-10 bg-transparent focus:outline-none focus:ring-transparent'
+                  {...register('email', { required: true })}
                 />
               </div>
 
               {errors.email && (
-                <span className="text-red-500 italic text-center mt-2">
+                <span className='text-red-500 italic text-center mt-1'>
                   Email is required.
                 </span>
               )}
-              <label className="self-start text-zinc-800 dark:text-zinc-100 mb-2 font-light text-3xl mt-16">
+              <label className='self-start text-zinc-800 dark:text-zinc-100 mb-1 font-light mt-4'>
                 Password
               </label>
-              <div className="w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md">
-                <Password className="ml-4 text-zinc-300 dark:text-zinc-600 text-4xl" />
+              <div className='w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md'>
+                <Password className='ml-2 text-zinc-300 dark:text-zinc-600 text-2xl' />
                 <input
-                  type={`${isPasswordVisible ? "text" : "password"}`}
-                  className="p-3 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-16 bg-transparent focus:outline-none focus:ring-transparent"
-                  {...register("password", { required: true })}
+                  type={`${isPasswordVisible ? 'text' : 'password'}`}
+                  className='p-1 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-10 bg-transparent focus:outline-none focus:ring-transparent'
+                  {...register('password', { required: true })}
                 />
-                <button onClick={toggleShowPassword} className="mr-4">
-                  <EyeVisible className="text-zinc-300 dark:text-zinc-600 text-3xl" />
+                <button onClick={toggleShowPassword} className='mr-4'>
+                  <EyeVisible className='text-zinc-300 dark:text-zinc-600' />
                 </button>
               </div>
 
               {errors.password && (
-                <span className="text-red-500 italic text-center mt-2">
+                <span className='text-red-500 italic text-center mt-1'>
                   Password is required.
                 </span>
               )}
               <button
-                type="submit"
-                className="text-white font-semibold text-2xl tracking-widest rounded-md bg-brand p-4 w-full h-16 flex gap-2 justify-center items-center mt-20 hover:bg-brand-light transition-colors"
+                type='submit'
+                className='text-white font-semibold text-xs tracking-widest rounded-md bg-brand p-2 w-full h-10 flex gap-1 justify-center items-center mt-10 hover:bg-brand-light transition-colors'
               >
                 CREATE ACCOUNT
               </button>
             </form>
 
-            <div className="flex items-center gap-4 mt-10 mb-16">
-              <span className="font-light text-2xl text-zinc-800 dark:text-zinc-100 mt-2">
+            <div className='flex flex-col items-center gap-2 mt-5 mb-4'>
+              <span className='font-light text-xs text-zinc-800 dark:text-zinc-100 between-lines relative'>
                 Or continue with:
               </span>
               <button
-                type="submit"
-                className="hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full p-2 transition-colors"
+                type='submit'
+                className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors'
                 onClick={signInWithGoogle}
               >
-                <Google className="text-3xl" />
+                <Google />
               </button>
             </div>
           </Dialog.Panel>
