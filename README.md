@@ -2,7 +2,8 @@
 
 # Learnings
 
-In this project, I learned how to use the Supabase API I was fascinated by its simplicity and practicality, I also used Tailwind for the first time, for its ease and agility, but in the long term I still see SCSS/CSS more maintainable.
+In this project,I used Tailwind for the first time, for its ease and agility, and realized that it is just AWESOME!
+Learnt how to use supabase database in realtime.
 
 # Tecnologies && Dependencies Used:
 
@@ -11,7 +12,7 @@ In this project, I learned how to use the Supabase API I was fascinated by its s
 - Context API
 - React
 - TailwindCSS
-- Supabase API
+- Supabase
 - Firebase Auth (Google && Github)
 - HeadlessUI
 - SVGR CLI (IconComponents)
