@@ -4,6 +4,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { Email, EyeVisible, Google, Password, User } from '../IconComponents';
 import { useTheme } from '../../contexts/Theme';
 import { useAuth } from '../../contexts/AuthContext';
+import Github from '../IconComponents/Github';
 
 type Props = {
   isModalOpen: boolean;
@@ -75,7 +76,6 @@ export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
                   Display Name is required.
                 </span>
               )}
-              {/*  */}
               <label className='self-start text-zinc-800 dark:text-zinc-100 mb-1 font-light mt-4'>
                 Email
               </label>
@@ -121,17 +121,26 @@ export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
               </button>
             </form>
 
-            <div className='flex flex-col items-center gap-2 mt-5 mb-4'>
+            <div className='flex flex-col items-center gap-2 mt-5 mb-4 w-full'>
               <span className='font-light text-xs text-zinc-800 dark:text-zinc-100 between-lines relative'>
                 Or continue with:
               </span>
-              <button
-                type='submit'
-                className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors'
-                onClick={signInWithGoogle}
-              >
-                <Google />
-              </button>
+              <div className='flex gap-2 w-full'>
+                <button
+                  type='submit'
+                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
+                  onClick={signInWithGoogle}
+                >
+                  <Google className='text-2xl my-1' />
+                </button>
+                <button
+                  type='submit'
+                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
+                  onClick={() => {}}
+                >
+                  <Github className='text-2xl text-black dark:text-white my-1' />
+                </button>
+              </div>
             </div>
           </Dialog.Panel>
         </Transition.Child>
