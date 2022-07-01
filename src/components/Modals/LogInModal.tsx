@@ -11,7 +11,7 @@ type Props = {
   handleToggleModal: () => void;
 };
 
-export const SignInModal = ({ isModalOpen, handleToggleModal }: Props) => {
+export const LogInModal = ({ isModalOpen, handleToggleModal }: Props) => {
   const { theme } = useTheme();
   const { signIn, signInWithGoogle } = useAuth();
   const {
