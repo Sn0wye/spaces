@@ -155,7 +155,7 @@ export const SignUpModal = ({
                 type='submit'
                 className='text-white font-semibold text-xs tracking-widest rounded-md bg-brand p-2 w-full h-10 flex gap-1 justify-center items-center mt-10 mb-6 hover:bg-brand-light transition-colors'
               >
-                LOG IN
+                SIGN UP
               </button>
             </form>
           </Dialog.Panel>
