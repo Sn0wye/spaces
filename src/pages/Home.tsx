@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import spacesImg from '../assets/icons/SpacesLogo.svg';
+import { LogInModal } from '../components/Modals/LogInModal';
 import { SignUpModal } from '../components/Modals/SignUpModal';
 
 export function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
-  const handleToggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const handleToggleLogInModal = () => {
+    setIsLogInModalOpen(!isLogInModalOpen);
   };
+
+  const handleToggleSignUpModal = () => {
+    setIsSignUpModalOpen(!isSignUpModalOpen);
+  };
+
+  const handleAlternateBetweenModals = () => {
+    if (isLogInModalOpen) {
+      handleToggleLogInModal();
+      handleToggleSignUpModal();
+    } else {
+      handleToggleLogInModal();
+      handleToggleSignUpModal();
+    }
+  };
+
   return (
     <>
       <div className='w-full h-screen bg-gradient-to-b from-brand to-[#5C4BC5] flex flex-col items-center justify-center'>
@@ -25,15 +42,21 @@ export function Home() {
           <u>tasks done</u> best.
         </p>
         <button
-          onClick={handleToggleModal}
+          onClick={handleToggleLogInModal}
           className='mt-12 py-6 px-12 border-2 border-white bg-transparent text-white rounded-lg'
         >
           GET STARTED
         </button>
       </div>
+      <LogInModal
+        isModalOpen={isLogInModalOpen}
+        handleToggleModal={handleToggleLogInModal}
+        handleAlternateBetweenModals={handleAlternateBetweenModals}
+      />
       <SignUpModal
-        isModalOpen={isModalOpen}
-        handleToggleModal={handleToggleModal}
+        isModalOpen={isSignUpModalOpen}
+        handleToggleModal={handleToggleSignUpModal}
+        handleAlternateBetweenModals={handleAlternateBetweenModals}
       />
     </>
   );

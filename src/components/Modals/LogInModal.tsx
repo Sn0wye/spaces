@@ -9,9 +9,14 @@ import Github from '../IconComponents/Github';
 type Props = {
   isModalOpen: boolean;
   handleToggleModal: () => void;
+  handleAlternateBetweenModals: () => void;
 };
 
-export const LogInModal = ({ isModalOpen, handleToggleModal }: Props) => {
+export const LogInModal = ({
+  isModalOpen,
+  handleToggleModal,
+  handleAlternateBetweenModals,
+}: Props) => {
   const { theme } = useTheme();
   const { signIn, signInWithGoogle } = useAuth();
   const {
@@ -122,7 +127,10 @@ export const LogInModal = ({ isModalOpen, handleToggleModal }: Props) => {
                 <span className='text-zinc-800 dark:text-zinc-100 font-light'>
                   No Account?
                 </span>
-                <span className='text-brand cursor-pointer hover:underline font-medium'>
+                <span
+                  className='text-brand cursor-pointer hover:underline font-medium'
+                  onClick={handleAlternateBetweenModals}
+                >
                   Sign Up
                 </span>
               </div>

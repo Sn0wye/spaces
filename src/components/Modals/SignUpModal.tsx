@@ -9,9 +9,14 @@ import Github from '../IconComponents/Github';
 type Props = {
   isModalOpen: boolean;
   handleToggleModal: () => void;
+  handleAlternateBetweenModals: () => void;
 };
 
-export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
+export const SignUpModal = ({
+  isModalOpen,
+  handleToggleModal,
+  handleAlternateBetweenModals,
+}: Props) => {
   const { theme } = useTheme();
   const { signUpWithEmailAndPassword, signInWithGoogle } = useAuth();
 
@@ -56,6 +61,28 @@ export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
               </h1>
               <span className='block h-1 w-full bg-zinc-300 dark:bg-zinc-600' />
             </header>
+            <div className='flex flex-col items-center gap-2 mt-5 mb-4 w-full'>
+              <div className='flex gap-2 w-full'>
+                <button
+                  type='submit'
+                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
+                  onClick={signInWithGoogle}
+                >
+                  <Google className='text-2xl my-1' />
+                </button>
+                <button
+                  type='submit'
+                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
+                  onClick={() => {}}
+                >
+                  <Github className='text-2xl text-black dark:text-white my-1' />
+                </button>
+              </div>
+              <span className='font-light text-xs text-zinc-800 dark:text-zinc-100 between-lines relative'>
+                Or continue with:
+              </span>
+            </div>
+
             <form
               onSubmit={handleSubmit(onSubmit)}
               className='flex flex-col items-center w-full'
@@ -113,35 +140,24 @@ export const SignUpModal = ({ isModalOpen, handleToggleModal }: Props) => {
                   Password is required.
                 </span>
               )}
+              <div className='flex gap-2 mt-6'>
+                <span className='text-zinc-800 dark:text-zinc-100 font-light'>
+                  Already have an Account?
+                </span>
+                <span
+                  className='text-brand cursor-pointer hover:underline font-medium'
+                  onClick={handleAlternateBetweenModals}
+                >
+                  Log In
+                </span>
+              </div>
               <button
                 type='submit'
-                className='text-white font-semibold text-xs tracking-widest rounded-md bg-brand p-2 w-full h-10 flex gap-1 justify-center items-center mt-10 hover:bg-brand-light transition-colors'
+                className='text-white font-semibold text-xs tracking-widest rounded-md bg-brand p-2 w-full h-10 flex gap-1 justify-center items-center mt-10 mb-6 hover:bg-brand-light transition-colors'
               >
-                CREATE ACCOUNT
+                LOG IN
               </button>
             </form>
-
-            <div className='flex flex-col items-center gap-2 mt-5 mb-4 w-full'>
-              <span className='font-light text-xs text-zinc-800 dark:text-zinc-100 between-lines relative'>
-                Or continue with:
-              </span>
-              <div className='flex gap-2 w-full'>
-                <button
-                  type='submit'
-                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
-                  onClick={signInWithGoogle}
-                >
-                  <Google className='text-2xl my-1' />
-                </button>
-                <button
-                  type='submit'
-                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
-                  onClick={() => {}}
-                >
-                  <Github className='text-2xl text-black dark:text-white my-1' />
-                </button>
-              </div>
-            </div>
           </Dialog.Panel>
         </Transition.Child>
       </Dialog>
