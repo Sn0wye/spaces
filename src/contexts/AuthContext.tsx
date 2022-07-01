@@ -1,14 +1,11 @@
 import {
   createUserWithEmailAndPassword,
-  getRedirectResult,
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
-  UserCredential,
 } from 'firebase/auth';
 import {
   createContext,
@@ -33,7 +30,7 @@ export type User = {
 type AuthContextType = {
   user: User | null;
   signInWithGoogle: () => Promise<void>;
-  // signInWithGithub: () => Promise<void>;
+  signInWithGithub: () => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signUpWithEmailAndPassword: (
     email: string,
@@ -73,15 +70,11 @@ export function AuthProvider({ children }: AuthProps) {
     setUser(parsedUser);
   }
 
-  // function signInWithGithub() {
-  //   signInWithRedirect(auth, githubProvider);
-  // }
-
-  // function getGithubUser() {
-  //   getRedirectResult(auth).then((result) => {
-  //     console.log(result);
-  //   });
-  // }
+  async function signInWithGithub() {
+    const user = await signInWithPopup(auth, githubProvider);
+    const parsedUser = parseUser(user);
+    setUser(parsedUser);
+  }
 
   async function signIn(email: string, password: string) {
     const user = await signInWithEmailAndPassword(auth, email, password);
@@ -116,6 +109,7 @@ export function AuthProvider({ children }: AuthProps) {
         signInWithGoogle,
         signUpWithEmailAndPassword,
         logOut,
+        signInWithGithub,
       }}
     >
       {children}

@@ -18,7 +18,7 @@ export const LogInModal = ({
   handleAlternateBetweenModals,
 }: Props) => {
   const { theme } = useTheme();
-  const { signIn, signInWithGoogle } = useAuth();
+  const { signIn, signInWithGoogle, signInWithGithub } = useAuth();
   const {
     register,
     handleSubmit,
@@ -74,7 +74,7 @@ export const LogInModal = ({
                 <button
                   type='submit'
                   className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
-                  onClick={() => {}}
+                  onClick={signInWithGithub}
                 >
                   <Github className='text-2xl text-black dark:text-white my-1' />
                 </button>
