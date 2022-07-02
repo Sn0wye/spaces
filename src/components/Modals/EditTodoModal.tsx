@@ -49,11 +49,11 @@ const EditTodoModal = ({
                 type='text'
                 value={newTodoDescription}
                 onChange={(e) => setNewTodoDescription(e.target.value)}
-                className='w-4/5 p-2 mt-8 font-inter text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand focus:outline-brand'
+                className='w-4/5 p-2 mt-8 font-inter text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand-500 focus:outline-brand-500'
               />
               <button
                 type='submit'
-                className='text-white font-bold rounded-xl bg-brand p-4 w-20 h-10 flex justify-center items-center mt-8 hover:bg-brand-light transition-colors shadow-md'
+                className='text-white font-bold rounded-xl bg-brand-500 p-4 w-20 h-10 flex justify-center items-center mt-8 hover:bg-brand-300 transition-colors shadow-md'
                 onClick={() => {
                   handleToggleModal();
                   handleUpdateTodo(todo.id, newTodoDescription);

@@ -31,9 +31,9 @@ export function Navbar() {
           aria-label='Toggle Theme'
         >
           {theme === 'dark' ? (
-            <Sun className='text-brand text-3xl ' />
+            <Sun className='text-brand-500 text-3xl ' />
           ) : (
-            <Moon className='text-brand text-3xl' />
+            <Moon className='text-brand-500 text-3xl' />
           )}
         </button>
         <Popover className='relative'>

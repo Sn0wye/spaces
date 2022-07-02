@@ -29,7 +29,7 @@ export const TodoRow = ({
           <input
             type='checkbox'
             checked={todo.isCompleted}
-            className='w-9 h-9 border-brand rounded-xl checked:bg-brand dark:bg-zinc-800 dark:checked:bg-brand focus:ring-brand'
+            className='w-9 h-9 border-brand-500 rounded-xl checked:bg-brand-500 dark:bg-zinc-800 dark:checked:bg-brand-500 focus:ring-brand-500'
             onChange={() => handleCheckTodo(todo.id)}
           />
           <p
@@ -46,14 +46,14 @@ export const TodoRow = ({
             onClick={handleToggleModal}
             className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded p-2 transition-colors'
           >
-            <Pencil className='text-brand text-2xl' />
+            <Pencil className='text-brand-500 text-2xl' />
           </button>
           <button
             className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded p-2 transition-colors'
             aria-label='Delete a todo'
             onClick={() => handleDeleteTodo(todo.id)}
           >
-            <Trash className=' text-brand text-2xl' />
+            <Trash className=' text-brand-500 text-2xl' />
           </button>
         </div>
       </div>

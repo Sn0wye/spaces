@@ -128,7 +128,7 @@ export const LogInModal = ({
                   No Account?
                 </span>
                 <span
-                  className='text-brand cursor-pointer hover:underline font-medium'
+                  className='text-brand-500 cursor-pointer hover:underline font-medium'
                   onClick={handleAlternateBetweenModals}
                 >
                   Sign Up
@@ -136,7 +136,7 @@ export const LogInModal = ({
               </div>
               <button
                 type='submit'
-                className='text-white font-semibold text-xs tracking-widest rounded-md bg-brand p-2 w-full h-10 flex gap-1 justify-center items-center mt-10 mb-6 hover:bg-brand-light transition-colors'
+                className='text-white font-semibold text-xs tracking-widest rounded-md bg-brand-500 p-2 w-full h-10 flex gap-1 justify-center items-center mt-10 mb-6 hover:bg-brand-300 transition-colors'
               >
                 LOG IN
               </button>
