@@ -36,7 +36,7 @@ export const AddTodo = () => {
         name='task'
         value={task}
         placeholder={'Add a new task'}
-        className='w-full md:w-1/2 p-3 font-inter text-2xl font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand-500 focus:outline-brand-500 shadow-md dark:shadow-xl'
+        className='w-full md:w-1/2 p-3 font-inter text-2xl font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand-500 focus:outline-brand-500 shadow-md dark:shadow-xl placeholder:text-zinc-400'
         onChange={(e) => setTask(e.target.value)}
       />
     </form>
