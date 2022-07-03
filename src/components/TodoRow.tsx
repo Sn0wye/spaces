@@ -24,36 +24,36 @@ export const TodoRow = ({
 
   return (
     <>
-      <div className='flex items-center mb-6 justify-between'>
-        <div className='flex items-center gap-6'>
+      <div className='flex mb-3 justify-between p-4 bg-zinc-300 dark:bg-gray-500 rounded-lg gap-3'>
+        <div className='flex items-center gap-3'>
           <input
             type='checkbox'
             checked={todo.isCompleted}
-            className='w-9 h-9 border-brand-500 rounded-xl checked:bg-brand-500 dark:bg-zinc-800 dark:checked:bg-brand-500 focus:ring-brand-500'
+            className='w-5 h-5 rounded-full border-2 border-brand-500 bg-transparent checked:bg-brand-500 checked:hover:bg-brand-300 hover:ring-1 hover:ring-brand-300 hover:bg-brand-300 hover:bg-opacity-20 focus:border-none focus:ring-none focus:outline-none'
             onChange={() => handleCheckTodo(todo.id)}
           />
           <p
-            className={`text-2xl font-regular ${
-              todo.isCompleted ? 'line-through' : ''
+            className={`text-sm text-zinc-800 dark:text-gray-100 ${
+              todo.isCompleted ? 'line-through text-gray-300' : ''
             }`}
           >
             {todo.description}
           </p>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex gap-3'>
           <button
             aria-label='Update a todo'
             onClick={handleToggleModal}
-            className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded p-2 transition-colors'
+            className='group hover:bg-zinc-400 dark:hover:bg-gray-400 rounded p-1 transition-colors'
           >
-            <Pencil className='text-brand-500 text-2xl' />
+            <Pencil className='text-gray-300 text-2xl group-hover:text-brand-500' />
           </button>
           <button
-            className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded p-2 transition-colors'
+            className='group hover:bg-zinc-400 dark:hover:bg-gray-400 rounded p-1 transition-colors'
             aria-label='Delete a todo'
             onClick={() => handleDeleteTodo(todo.id)}
           >
-            <Trash className=' text-brand-500 text-2xl' />
+            <Trash className='text-gray-300 text-2xl group-hover:text-danger' />
           </button>
         </div>
       </div>

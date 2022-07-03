@@ -1,6 +1,7 @@
 import { Moon, Sun } from './IconComponents';
 import { useTheme } from '../contexts/Theme';
-import SpacesLogo from '../assets/icons/SpacesLogo.svg';
+import SpacesLogo from '../assets/icons/SpacesLogoGroup.svg';
+import SpacesLogoBlack from '../assets/icons/SpacesLogoBlack.svg';
 import { useAuth } from '../contexts/AuthContext';
 import { Popover } from '@headlessui/react';
 
@@ -19,12 +20,13 @@ export function Navbar() {
   }
 
   return (
-    <nav className='flex items-center justify-between p-4 shadow-md dark:shadow-xl'>
+    <nav className='flex justify-around p-4 shadow-md dark:shadow-xl h-[20vh] w-full dark:bg-black bg-surface-light'>
+      {theme === 'dark' ? (
+        <img src={SpacesLogo} className='w-40' />
+      ) : (
+        <img src={SpacesLogoBlack} className='w-40' />
+      )}
       <div className='flex items-center gap-2'>
-        <img src={SpacesLogo} alt='Spaces Logo' className='w-12' />
-        <h1 className='text-5xl font-bold'>Spaces</h1>
-      </div>
-      <div className='ml-auto flex items-center gap-2'>
         <button
           className='hover:bg-zinc-300 dark:hover:bg-zinc-600 rounded-lg p-2 transition-colors duration-300'
           onClick={handleThemeToggle}
