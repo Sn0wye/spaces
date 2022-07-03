@@ -25,7 +25,7 @@ export const AddTodo = () => {
 
   return (
     <form
-      className='w-1/2 flex gap-2 justify-center -translate-y-7'
+      className='w-full md:w-1/2 flex gap-2 justify-center -translate-y-7'
       onSubmit={handleSubmitTodo}
     >
       <input
@@ -36,7 +36,7 @@ export const AddTodo = () => {
         className='bg-zinc-300 dark:bg-gray-500 border- w-full rounded-lg placeholder:text-gray-300 p-4  text-800 dark:text-gray-100 focus:border-brand-500 focus:ring-brand-500 focus:ring-1 focus:outline-none border-white dark:border-none'
         onChange={(e) => setTask(e.target.value)}
       />
-      <button className='flex items-center gap-2 p-4 bg-brand-500 hover:bg-brand-300 transition-colors rounded-lg text-gray-100 leading-none'>
+      <button className='flex items-center gap-2 p-4 bg-brand-500 hover:bg-brand-300 transition-colors rounded-lg text-gray-100 leading-none w-28'>
         Criar
         <img src={plusIcon} alt={plusIcon} className='w-4' />
       </button>

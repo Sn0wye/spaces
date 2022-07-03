@@ -11,7 +11,7 @@ export const TasksStatus = ({
   completedTodosCount,
 }: TasksStatusProps) => {
   return (
-    <div className='w-1/2 flex justify-center mb-6'>
+    <div className='w-full md:w-1/2 flex justify-center mb-6'>
       <div className='flex items-center gap-2'>
         <span className='font-bold text-sm text-brand-500'>Creted Tasks</span>
         <span className='px-2 py-[0,125rem] bg-zinc-300 dark:bg-gray-400 text-gray-800 dark:text-gray-200 rounded-full font-bold text-xs'>

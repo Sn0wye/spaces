@@ -18,7 +18,7 @@ export const Todos = () => {
       <AddTodo />
       <TasksStatus todoCount={todoCount} completedTodosCount={completedTodos} />
       {!todoCount && <NoTasks />}
-      <div className='w-1/2 h-fit'>
+      <div className='w-full md:w-1/2 h-fit'>
         {todos?.map((todo: Todo) => (
           <TodoRow
             key={todo.id}

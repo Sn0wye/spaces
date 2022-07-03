@@ -44,12 +44,11 @@ const EditTodoModal = ({
             <Dialog.Title className='font-bold text-black dark:text-white text-2xl'>
               Update Todo Info
             </Dialog.Title>
-            <form className='flex flex-col justify-center items-center'>
-              <input
-                type='text'
+            <form className=' w-full flex flex-col justify-center items-center'>
+              <textarea
                 value={newTodoDescription}
                 onChange={(e) => setNewTodoDescription(e.target.value)}
-                className='w-4/5 p-2 mt-8 font-inter text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand-500 focus:outline-brand-500'
+                className='w-4/5 p-2 mt-8 font-inter text-md font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none bg-zinc-100 dark:bg-zinc-700 rounded-xl focus:border-brand-500 focus:outline-brand-500 resize-x min-h-[6rem] '
               />
               <button
                 type='submit'

@@ -66,14 +66,14 @@ export const LogInModal = ({
               <div className='flex gap-2 w-full'>
                 <button
                   type='submit'
-                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
+                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-full md:w-1/2 flex items-center justify-center'
                   onClick={signInWithGoogle}
                 >
                   <Google className='text-2xl my-1' />
                 </button>
                 <button
                   type='submit'
-                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-1/2 flex items-center justify-center'
+                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-full md:w-1/2 flex items-center justify-center'
                   onClick={signInWithGithub}
                 >
                   <Github className='text-2xl text-black dark:text-white my-1' />
