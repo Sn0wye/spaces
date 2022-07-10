@@ -6,7 +6,7 @@ import EditTodoModal from './Modals/EditTodoModal';
 type TodoProps = {
   todo: Todo;
   handleDeleteTodo: (id: string) => void;
-  handleCheckTodo: (id: string) => void;
+  handleCheckTodo: (id: string, isCompleted: boolean) => void;
   handleUpdateTodo: (id: string, newTodoDescription: string) => void;
 };
 
@@ -30,7 +30,7 @@ export const TodoRow = ({
             type='checkbox'
             checked={todo.isCompleted}
             className='w-5 h-5 rounded-full border-2 border-brand-500 bg-transparent checked:bg-brand-500 checked:hover:bg-brand-300 hover:ring-1 hover:ring-brand-300 hover:bg-brand-300 hover:bg-opacity-20 focus:border-none focus:ring-none focus:outline-none'
-            onChange={() => handleCheckTodo(todo.id)}
+            onChange={() => handleCheckTodo(todo.id, todo.isCompleted)}
           />
           <p
             className={`text-sm text-zinc-800 dark:text-gray-100 ${

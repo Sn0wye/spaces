@@ -5,9 +5,10 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { supabase } from '../lib/supabase';
+import { off, onValue, push, ref, remove, update } from 'firebase/database';
 import { Todo } from '../types/todo';
 import { useAuth, User } from './Auth';
+import { database } from '../lib/firebase';
 
 type TodoContextProps = {
   children: ReactNode;
@@ -18,8 +19,18 @@ type TodoContextType = {
   addTodo: (todo: Todo) => void;
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, newTodoDescription: string) => void;
-  handleCheckTodo: (id: string) => void;
+  handleCheckTodo: (id: string, isChecked: boolean) => void;
 };
+
+type FirebaseTodos = Record<
+  string,
+  {
+    id: string;
+    description: string;
+    isCompleted: boolean;
+    author: string;
+  }
+>;
 
 const TodoContext = createContext<TodoContextType>({} as TodoContextType);
 
@@ -29,69 +40,57 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
 
   useEffect(() => {
     if (!user) return;
-    fetchTodos(user);
+    const todoRef = ref(database, `todos/${user.uid}`);
 
-    const eventListener = supabase
-      .from('Todos')
-      .on('*', async (payload) => {
-        await fetchTodos(user);
-      })
-      .subscribe();
-    return () => {
-      supabase.removeSubscription(eventListener);
-    };
+    //Firebase Realtime Event Listener
+    onValue(todoRef, (room) => {
+      const todosDatabase = room.val();
+      const firebaseTodos: FirebaseTodos = todosDatabase.todos ?? {};
+
+      const parsedTodos = Object.entries(firebaseTodos).map(([key, value]) => {
+        return {
+          id: key,
+          description: value.description,
+          isCompleted: value.isCompleted,
+          author: value.author,
+        };
+      });
+
+      setTodos(parsedTodos);
+    });
+
+    return () => off(todoRef);
   }, [user]);
 
-  const fetchTodos = async (user: User) => {
-    const { data, error } = await supabase
-      .from('Todos')
-      .select('*')
-      .eq('author', user.uid);
-    if (error) throw new Error(error.message);
-    setTodos(data);
-  };
-
   async function addTodo(todo: Todo) {
-    const { error } = await supabase.from('Todos').insert([
-      {
-        id: todo.id,
-        description: todo.description,
-        isCompleted: todo.isCompleted,
-        author: todo.author,
-      },
-    ]);
-    if (error) throw new Error(error.message);
+    if (!user) return;
+    const todoRef = ref(database, `todos/${user.uid}/todos`);
+
+    await push(todoRef, todo);
   }
 
   async function deleteTodo(id: string) {
-    const { error } = await supabase.from('Todos').delete().eq('id', id);
-    if (error) throw new Error(error.message);
+    if (!user) return;
+    const todoPath = ref(database, `todos/${user.uid}/todos/${id}`);
+
+    await remove(todoPath);
   }
 
   async function updateTodo(id: string, newTodoDescription: string) {
-    const { error } = await supabase
-      .from('Todos')
-      .update({ description: newTodoDescription })
-      .eq('id', id);
-    if (error) throw new Error(error.message);
+    if (!user) return;
+    const todoPath = ref(database, `todos/${user.uid}/todos/${id}`);
+
+    await update(todoPath, { description: newTodoDescription });
   }
 
-  async function handleCheckTodo(id: string) {
-    const { data, error } = await supabase
-      .from('Todos')
-      .select('*')
-      .eq('id', id);
-    if (error) throw new Error(error.message);
-    if (data?.[0]?.isCompleted) {
-      const { error } = await supabase
-        .from('Todos')
-        .update({ isCompleted: false })
-        .eq('id', id);
+  async function handleCheckTodo(id: string, isCompleted: boolean) {
+    if (!user) return;
+    const todoPath = ref(database, `todos/${user.uid}/todos/${id}`);
+
+    if (isCompleted) {
+      await update(todoPath, { isCompleted: false });
     } else {
-      const { error } = await supabase
-        .from('Todos')
-        .update({ isCompleted: true })
-        .eq('id', id);
+      await update(todoPath, { isCompleted: true });
     }
   }
 
