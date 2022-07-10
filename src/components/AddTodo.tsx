@@ -32,7 +32,7 @@ export const AddTodo = () => {
         type='text'
         name='task'
         value={task}
-        placeholder='Add a new task'
+        placeholder='Create a new task'
         className='bg-zinc-300 dark:bg-gray-500 border- w-full rounded-lg placeholder:text-gray-300 p-4  text-800 dark:text-gray-100 focus:border-brand-500 focus:ring-brand-500 focus:ring-1 focus:outline-none border-white dark:border-none'
         onChange={(e) => setTask(e.target.value)}
       />
