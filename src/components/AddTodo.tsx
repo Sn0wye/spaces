@@ -37,7 +37,7 @@ export const AddTodo = () => {
         onChange={(e) => setTask(e.target.value)}
       />
       <button className='flex items-center gap-2 p-4 bg-brand-500 hover:bg-brand-300 transition-colors rounded-lg text-gray-100 leading-none w-28'>
-        Criar
+        Create
         <img src={plusIcon} alt={plusIcon} className='w-4' />
       </button>
     </form>
