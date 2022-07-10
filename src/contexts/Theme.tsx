@@ -17,7 +17,7 @@ type ThemeType = {
 
 type Theme = 'dark' | 'light';
 
-export const Theme = createContext<ThemeType>({} as ThemeType);
+const Theme = createContext<ThemeType>({} as ThemeType);
 
 export function ThemeProvider({ children }: ThemeProps) {
   const [theme, setTheme] = useState<Theme>('dark');

@@ -2,7 +2,7 @@ import { Moon, Sun } from './IconComponents';
 import { useTheme } from '../contexts/Theme';
 import SpacesLogo from '../assets/icons/SpacesLogoGroup.svg';
 import SpacesLogoBlack from '../assets/icons/SpacesLogoBlack.svg';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/Auth';
 import { Popover } from '@headlessui/react';
 
 export function Navbar() {

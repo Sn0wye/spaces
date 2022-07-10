@@ -40,9 +40,7 @@ type AuthContextType = {
   logOut: () => Promise<void>;
 };
 
-export const AuthContext = createContext<AuthContextType>(
-  {} as AuthContextType
-);
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export function AuthProvider({ children }: AuthProps) {
   const [user, setUser] = useState<User | null>(null);

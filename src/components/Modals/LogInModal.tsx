@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { useTheme } from '../../contexts/Theme';
 import { useForm } from 'react-hook-form';
 import { Email, EyeVisible, Google, Password } from '../IconComponents';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/Auth';
 import Github from '../IconComponents/Github';
 
 type Props = {

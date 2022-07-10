@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { supabase } from '../lib/supabase';
 import { Todo } from '../types/todo';
-import { useAuth, User } from './AuthContext';
+import { useAuth, User } from './Auth';
 
 type TodoContextProps = {
   children: ReactNode;
@@ -21,9 +21,7 @@ type TodoContextType = {
   handleCheckTodo: (id: string) => void;
 };
 
-export const TodoContext = createContext<TodoContextType>(
-  {} as TodoContextType
-);
+const TodoContext = createContext<TodoContextType>({} as TodoContextType);
 
 export const TodoProvider = ({ children }: TodoContextProps) => {
   const [todos, setTodos] = useState<Todo[]>([]);

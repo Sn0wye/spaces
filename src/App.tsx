@@ -1,4 +1,4 @@
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/Auth';
 import { TodoProvider } from './contexts/Todos';
 import IsAuthenticated from './helpers/IsAuthenticated';
 import { TodoApp } from './pages/TodoApp';

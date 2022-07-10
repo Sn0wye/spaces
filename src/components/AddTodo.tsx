@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useTodo } from '../contexts/Todos';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/Auth';
 import plusIcon from '../assets/icons/Plus.svg';
 
 export const AddTodo = () => {

@@ -1,7 +1,7 @@
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Todo } from '../../types/todo';
-import { Theme } from '../../contexts/Theme';
+import { useTheme } from '../../contexts/Theme';
 
 type Props = {
   isModalOpen: boolean;
@@ -19,7 +19,7 @@ const EditTodoModal = ({
   const [newTodoDescription, setNewTodoDescription] = useState(
     todo.description
   );
-  const { theme } = useContext(Theme);
+  const { theme } = useTheme();
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
