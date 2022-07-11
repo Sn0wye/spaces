@@ -39,6 +39,7 @@ module.exports = {
           '0%': {
             opacity: 0,
             scale: 0,
+            transform: 'translateY(-30%)',
           },
           '100%': {
             opacity: 1,
