@@ -34,7 +34,9 @@ export const TodoRow = ({
           />
           <p
             className={`text-sm text-zinc-800 dark:text-gray-100 ${
-              todo.isCompleted ? 'line-through text-gray-300' : ''
+              todo.isCompleted
+                ? 'line-through text-gray-300 dark:text-gray-300'
+                : ''
             }`}
           >
             {todo.description}
