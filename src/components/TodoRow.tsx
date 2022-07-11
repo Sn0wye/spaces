@@ -24,7 +24,7 @@ export const TodoRow = ({
 
   return (
     <>
-      <div className='flex mb-3 justify-between p-4 bg-zinc-300 dark:bg-gray-500 rounded-lg gap-3'>
+      <div className='flex mb-3 justify-between p-4 bg-zinc-300 dark:bg-gray-500 rounded-lg gap-3 animate-appear'>
         <div className='flex items-center gap-3'>
           <input
             type='checkbox'
