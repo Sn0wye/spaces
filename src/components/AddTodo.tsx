@@ -1,8 +1,8 @@
 import { FormEvent, useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import { useTodo } from '../contexts/Todos';
-import { useAuth } from '../contexts/Auth';
 import plusIcon from '../assets/icons/Plus.svg';
+import { useAuth } from '../contexts/Auth';
+import { useTodo } from '../contexts/Todos';
 
 export const AddTodo = () => {
   const [task, setTask] = useState('');
@@ -38,7 +38,7 @@ export const AddTodo = () => {
       />
       <button className='flex items-center gap-2 p-4 bg-brand-500 hover:bg-brand-300 transition-colors rounded-lg text-gray-100 leading-none w-28'>
         Create
-        <img src={plusIcon} alt={plusIcon} className='w-4' />
+        <img src={plusIcon} alt={plusIcon} className='w-4 mr-4' />
       </button>
     </form>
   );
