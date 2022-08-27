@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import spacesImg from '../assets/icons/SpacesLogo.svg';
 import { LogInModal } from '../components/Modals/LogInModal';
 import { SignUpModal } from '../components/Modals/SignUpModal';
@@ -43,7 +43,7 @@ export function Home() {
         </p>
         <button
           onClick={handleToggleLogInModal}
-          className='mt-12 py-6 px-12 border-2 border-white bg-transparent text-white rounded-lg'
+          className='mt-12 py-6 px-12 border-2 border-white bg-transparent text-white rounded-lg hover:underline  hover:opacity-70 transition-colors'
         >
           GET STARTED
         </button>
