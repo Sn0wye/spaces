@@ -1,9 +1,9 @@
-import { Moon, Sun } from './IconComponents';
-import { useTheme } from '../contexts/Theme';
-import SpacesLogo from '../assets/icons/SpacesLogoGroup.svg';
-import SpacesLogoBlack from '../assets/icons/SpacesLogoBlack.svg';
-import { useAuth } from '../contexts/Auth';
 import { Popover } from '@headlessui/react';
+import SpacesLogoBlack from '../assets/icons/SpacesLogoBlack.svg';
+import SpacesLogo from '../assets/icons/SpacesLogoGroup.svg';
+import { useAuth } from '../contexts/Auth';
+import { useTheme } from '../contexts/Theme';
+import { Moon, Sun } from './IconComponents';
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -45,7 +45,7 @@ export function Navbar() {
               src={user?.avatar || undefined}
             />
           </Popover.Button>
-          <Popover.Panel className='absolute bg-zinc-100 dark:bg-zinc-700 rounded-md top-8 right-0 md:top-10 z-10 h-fit flex flex-col items-center p-1'>
+          <Popover.Panel className='absolute bg-zinc-100 dark:bg-zinc-700 rounded-md top-8 right-0 md:top-10 z-10 h-fit flex flex-col items-center p-1 animate-appear'>
             <button onClick={logOut} className='popover-icon'>
               Disconnect
             </button>
