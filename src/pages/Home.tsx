@@ -43,7 +43,7 @@ export function Home() {
         </p>
         <button
           onClick={handleToggleLogInModal}
-          className='mt-12 py-6 px-12 border-2 border-white bg-transparent text-white rounded-lg hover:underline  hover:opacity-70 transition-colors'
+          className='mt-12 py-6 px-12 font-semibold border-2 border-white bg-white text-brand-500 rounded-lg transition-all hover:bg-transparent hover:text-white duration-300 ease-in-out'
         >
           GET STARTED
         </button>
