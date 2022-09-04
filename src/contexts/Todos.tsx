@@ -1,3 +1,4 @@
+import { off, onValue, push, ref, remove, update } from 'firebase/database';
 import {
   createContext,
   ReactNode,
@@ -5,10 +6,9 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { off, onValue, push, ref, remove, update } from 'firebase/database';
-import { Todo } from '../types/todo';
-import { useAuth, User } from './Auth';
 import { database } from '../lib/firebase';
+import { Todo } from '../types/todo';
+import { useAuth } from './Auth';
 
 type TodoContextProps = {
   children: ReactNode;
@@ -45,7 +45,8 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
     //Firebase Realtime Event Listener
     onValue(todoRef, (room) => {
       const todosDatabase = room.val();
-      const firebaseTodos: FirebaseTodos = todosDatabase.todos ?? {};
+      const firebaseTodos: FirebaseTodos =
+        (todosDatabase && todosDatabase.todos) ?? {};
 
       const parsedTodos = Object.entries(firebaseTodos).map(([key, value]) => {
         return {
