@@ -12,7 +12,7 @@ Learnt how to use supabase database in realtime.
 - Context API
 - React
 - TailwindCSS
-- Supabase
+- Firebase Realtime Database
 - Firebase Auth (Google && Github)
 - HeadlessUI
 - SVGR CLI (IconComponents)
