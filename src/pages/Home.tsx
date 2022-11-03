@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import spacesImg from '../assets/icons/SpacesLogo.svg';
 import { LogInModal } from '../components/Modals/LogInModal';
 import { SignUpModal } from '../components/Modals/SignUpModal';
@@ -27,23 +28,23 @@ export function Home() {
 
   return (
     <>
-      <div className='w-full h-screen bg-gradient-to-b from-brand-500 to-brand-600 flex flex-col items-center justify-center'>
+      <div className='flex h-screen w-full flex-col items-center justify-center bg-gradient-to-b from-brand-500 to-brand-600'>
         <main className='flex flex-col items-center'>
-          <h1 className='font-bold text-8xl md:text-9xl text-white'>Spaces</h1>
+          <h1 className='text-8xl font-bold text-white md:text-9xl'>Spaces</h1>
           <img
             src={spacesImg}
             alt='Spaces logo Image'
-            className='w-32 md:w-56 relative -top-16  md:-top-20'
+            className='relative -top-16 w-32 md:-top-20  md:w-56'
           />
         </main>
-        <p className='text-white text-center text-2xl'>
+        <p className='text-center text-2xl text-white'>
           <b>Simple</b>, <b>clean</b> and <b>fast</b> to get your
           <br />
           <u>tasks done</u> best.
         </p>
         <button
           onClick={handleToggleLogInModal}
-          className='mt-12 py-6 px-12 font-semibold border-2 border-white bg-white text-brand-500 rounded-lg transition-all hover:bg-transparent hover:text-white duration-300 ease-in-out'
+          className='mt-12 rounded-lg border-2 border-white bg-white py-6 px-12 font-semibold text-brand-500 transition-all duration-300 ease-in-out hover:bg-transparent hover:text-white'
         >
           GET STARTED
         </button>

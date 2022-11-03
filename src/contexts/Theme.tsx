@@ -3,21 +3,21 @@ import {
   ReactNode,
   useContext,
   useEffect,
-  useState,
+  useState
 } from 'react';
 
 type ThemeProps = {
   children: ReactNode;
 };
 
+type Theme = 'dark' | 'light';
+
 type ThemeType = {
   theme: Theme;
   toggleTheme: (theme: Theme) => void;
 };
 
-type Theme = 'dark' | 'light';
-
-const Theme = createContext<ThemeType>({} as ThemeType);
+const ThemeContext = createContext<ThemeType>({} as ThemeType);
 
 export function ThemeProvider({ children }: ThemeProps) {
   const [theme, setTheme] = useState<Theme>('dark');
@@ -39,10 +39,12 @@ export function ThemeProvider({ children }: ThemeProps) {
   }, []);
 
   return (
-    <Theme.Provider value={{ theme, toggleTheme }}>{children}</Theme.Provider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
 export const useTheme = () => {
-  const context = useContext(Theme);
+  const context = useContext(ThemeContext);
   return context;
 };

@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { v4 as uuid } from 'uuid';
+
 import plusIcon from '../assets/icons/Plus.svg';
 import { useAuth } from '../contexts/Auth';
 import { useTodo } from '../contexts/Todos';
@@ -17,7 +18,7 @@ export const AddTodo = () => {
         id: uuid(),
         description: task,
         isCompleted: false,
-        author: user?.uid!,
+        author: user?.uid!
       });
       setTask('');
     }
@@ -25,7 +26,7 @@ export const AddTodo = () => {
 
   return (
     <form
-      className='w-full md:w-1/2 flex gap-2 justify-center -translate-y-7'
+      className='flex w-full -translate-y-7 justify-center gap-2 md:w-1/2'
       onSubmit={handleSubmitTodo}
     >
       <input
@@ -33,12 +34,12 @@ export const AddTodo = () => {
         name='task'
         value={task}
         placeholder='Create a new task'
-        className='bg-zinc-300 dark:bg-gray-500 border- w-full rounded-lg placeholder:text-gray-300 p-4  text-800 dark:text-gray-100 focus:border-brand-500 focus:ring-brand-500 focus:ring-1 focus:outline-none border-white dark:border-none'
-        onChange={(e) => setTask(e.target.value)}
+        className='w-full rounded-lg border-white bg-zinc-300 p-4  placeholder:text-gray-300 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 dark:border-none dark:bg-gray-500 dark:text-gray-100'
+        onChange={e => setTask(e.target.value)}
       />
-      <button className='flex items-center gap-2 p-4 bg-brand-500 hover:bg-brand-300 transition-colors rounded-lg text-gray-100 leading-none w-28'>
+      <button className='flex w-28 items-center gap-2 rounded-lg bg-brand-500 p-4 leading-none text-gray-100 transition-colors hover:bg-brand-300'>
         Create
-        <img src={plusIcon} alt={plusIcon} className='w-4 mr-4' />
+        <img src={plusIcon} alt={plusIcon} className='mr-4 w-4' />
       </button>
     </form>
   );

@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+
 import { useAuth } from '../contexts/Auth';
 import { Home } from '../pages/Home';
 

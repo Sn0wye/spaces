@@ -6,6 +6,7 @@ import {
   useEffect,
   useState
 } from 'react';
+
 import { database } from '../lib/firebase';
 import { Todo } from '../types/todo';
 import { useAuth } from './Auth';
@@ -42,8 +43,8 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
     if (!user) return;
     const todoRef = ref(database, `todos/${user.uid}`);
 
-    //Firebase Realtime Event Listener
-    onValue(todoRef, (room) => {
+    // Firebase Realtime Event Listener
+    onValue(todoRef, room => {
       const todosDatabase = room.val();
       const firebaseTodos: FirebaseTodos =
         (todosDatabase && todosDatabase.todos) ?? {};
@@ -53,7 +54,7 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
           id: key,
           description: value.description,
           isCompleted: value.isCompleted,
-          author: value.author,
+          author: value.author
         };
       });
 
@@ -102,7 +103,7 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
         addTodo,
         deleteTodo,
         updateTodo,
-        checkTodo,
+        checkTodo
       }}
     >
       {children}

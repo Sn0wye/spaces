@@ -1,5 +1,6 @@
 import { Transition } from '@headlessui/react';
 import { useState } from 'react';
+
 import { useTodo } from '../contexts/Todos';
 import { Todo } from '../types/todo';
 import { Pencil, Trash } from './IconComponents';
@@ -9,18 +10,16 @@ type TodoProps = {
   todo: Todo;
 };
 
-export const TodoRow = ({
-  todo
-}: TodoProps) => {
+export const TodoRow = ({ todo }: TodoProps) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
 
-  const { deleteTodo, updateTodo, checkTodo } = useTodo();
+  const { deleteTodo, checkTodo } = useTodo();
 
   const handleDeleteTodo = () => {
     setIsTransitioning(false);
     // The todo deletion is delegated to afterLeave callback
-  }
+  };
 
   function handleToggleModal() {
     setIsEditModalOpen(!isEditModalOpen);
@@ -30,28 +29,28 @@ export const TodoRow = ({
     <Transition
       show={isTransitioning}
       appear={true}
-      enter="transition ease-out duration-300"
-      enterFrom="opacity-0 scale-75"
-      enterTo="opacity-100 scale-100"
-      leave="transition ease-in duration-300"
-      leaveFrom="opacity-100 scale-100"
-      leaveTo="opacity-0 scale-75"
+      enter='transition ease-out duration-300'
+      enterFrom='opacity-0 scale-75'
+      enterTo='opacity-100 scale-100'
+      leave='transition ease-in duration-300'
+      leaveFrom='opacity-100 scale-100'
+      leaveTo='opacity-0 scale-75'
       afterLeave={() => {
-        deleteTodo(todo.id)
+        deleteTodo(todo.id);
       }}
     >
-      <div className='flex mb-3 justify-between p-4 bg-zinc-300 dark:bg-gray-500 rounded-lg gap-3'>
+      <div className='mb-3 flex justify-between gap-3 rounded-lg bg-zinc-300 p-4 dark:bg-gray-500'>
         <div className='flex items-center gap-3'>
           <input
             type='checkbox'
             checked={todo.isCompleted}
-            className='w-5 h-5 rounded-full border-2 border-brand-500 bg-transparent checked:bg-brand-500 checked:hover:bg-brand-300 hover:ring-1 hover:ring-brand-300 hover:bg-brand-300 hover:bg-opacity-20 focus:border-none focus:ring-none focus:outline-none'
+            className='h-5 w-5 rounded-full border-2 border-brand-500 bg-transparent checked:bg-brand-500 hover:bg-brand-300/20 hover:ring-1  hover:ring-brand-300 checked:hover:bg-brand-300 focus:border-none focus:outline-none focus:ring-0'
             onChange={() => checkTodo(todo.id, todo.isCompleted)}
           />
           <p
             className={`text-sm text-zinc-800 dark:text-gray-100 ${
               todo.isCompleted
-                ? 'line-through text-gray-300 dark:text-gray-300'
+                ? 'text-gray-300 line-through dark:text-gray-300'
                 : ''
             }`}
           >
@@ -62,16 +61,16 @@ export const TodoRow = ({
           <button
             aria-label='Update a todo'
             onClick={handleToggleModal}
-            className='group hover:bg-zinc-400 dark:hover:bg-gray-400 rounded p-1 transition-colors'
+            className='group rounded p-1 transition-colors hover:bg-zinc-400 dark:hover:bg-gray-400'
           >
-            <Pencil className='text-gray-300 text-2xl group-hover:text-brand-500' />
+            <Pencil className='text-2xl text-gray-300 group-hover:text-brand-500' />
           </button>
           <button
-            className='group hover:bg-zinc-400 dark:hover:bg-gray-400 rounded p-1 transition-colors'
+            className='group rounded p-1 transition-colors hover:bg-zinc-400 dark:hover:bg-gray-400'
             aria-label='Delete a todo'
             onClick={handleDeleteTodo}
           >
-            <Trash className='text-gray-300 text-2xl group-hover:text-danger' />
+            <Trash className='text-2xl text-gray-300 group-hover:text-danger' />
           </button>
         </div>
       </div>

@@ -1,9 +1,10 @@
-import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { useTheme } from '../../contexts/Theme';
+import { Fragment, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Email, EyeVisible, Google, Password } from '../IconComponents';
+
 import { useAuth } from '../../contexts/Auth';
+import { useTheme } from '../../contexts/Theme';
+import { Email, EyeVisible, Google, Password } from '../IconComponents';
 import Github from '../IconComponents/Github';
 
 type Props = {
@@ -15,14 +16,14 @@ type Props = {
 export const LogInModal = ({
   isModalOpen,
   handleToggleModal,
-  handleAlternateBetweenModals,
+  handleAlternateBetweenModals
 }: Props) => {
   const { theme } = useTheme();
   const { signIn, signInWithGoogle, signInWithGithub } = useAuth();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -44,7 +45,7 @@ export const LogInModal = ({
           handleToggleModal();
         }}
         className={`${theme === 'dark' ? 'dark' : ''}
-        fixed inset-0 z-1 w-full h-screen bg-black bg-opacity-50 flex justify-center items-center select-none`}
+        fixed inset-0 z-10 flex h-screen w-full select-none items-center justify-center bg-black/50`}
       >
         <Transition.Child
           as={Fragment}
@@ -55,62 +56,62 @@ export const LogInModal = ({
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'
         >
-          <Dialog.Panel className='h-fit max-h-screen bg-white dark:bg-zinc-800 rounded-md flex flex-col items-center font-inter px-12'>
+          <Dialog.Panel className='flex h-fit max-h-screen flex-col items-center rounded-md bg-white px-12 font-inter dark:bg-zinc-800'>
             <header>
-              <h1 className='font-bold text-zinc-800 dark:text-zinc-100 text-2xl px-7 mt-6 mb-6'>
+              <h1 className='my-6 px-7 text-2xl font-bold text-zinc-800 dark:text-zinc-100'>
                 Log In
               </h1>
               <span className='block h-1 w-full bg-zinc-300 dark:bg-zinc-600' />
             </header>
-            <div className='flex flex-col items-center gap-2 mt-5 mb-4 w-full'>
-              <div className='flex gap-2 w-full'>
+            <div className='mt-5 mb-4 flex w-full flex-col items-center gap-2'>
+              <div className='flex w-full gap-2'>
                 <button
                   type='submit'
-                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-full md:w-1/2 flex items-center justify-center'
+                  className='flex w-full items-center justify-center rounded-md p-1 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700 md:w-1/2'
                   onClick={signInWithGoogle}
                 >
-                  <Google className='text-2xl my-1' />
+                  <Google className='my-1 text-2xl' />
                 </button>
                 <button
                   type='submit'
-                  className='hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-md p-1 transition-colors w-full md:w-1/2 flex items-center justify-center'
+                  className='flex w-full items-center justify-center rounded-md p-1 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700 md:w-1/2'
                   onClick={signInWithGithub}
                 >
-                  <Github className='text-2xl text-black dark:text-white my-1' />
+                  <Github className='my-1 text-2xl text-black dark:text-white' />
                 </button>
               </div>
-              <span className='font-light text-xs text-zinc-800 dark:text-zinc-100 between-lines relative'>
+              <span className='between-lines relative text-xs font-light text-zinc-800 dark:text-zinc-100'>
                 Or continue with:
               </span>
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className='flex flex-col items-center w-full'
+              className='flex w-full flex-col items-center'
             >
-              <label className='self-start text-zinc-800 dark:text-zinc-100 mb-1 font-light mt-4'>
+              <label className='mb-1 mt-4 self-start font-light text-zinc-800 dark:text-zinc-100'>
                 Email
               </label>
-              <div className='w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md'>
-                <Email className='ml-2 text-zinc-300 dark:text-zinc-600 text-2xl' />
+              <div className='flex w-full items-center rounded-md bg-zinc-100 dark:bg-zinc-700'>
+                <Email className='ml-2 text-2xl text-zinc-300 dark:text-zinc-600' />
                 <input
                   type='email'
-                  className='p-1 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-10 bg-transparent focus:outline-none focus:ring-transparent'
+                  className='h-10 w-full border-none bg-transparent p-1 font-inter font-normal text-zinc-500 outline-none focus:outline-none focus:ring-transparent dark:text-zinc-400'
                   {...register('email', { required: true })}
                 />
               </div>
               {errors.email && (
-                <span className='text-red-500 italic text-center mt-1'>
+                <span className='mt-1 text-center italic text-red-500'>
                   Email is required.
                 </span>
               )}
-              <label className='self-start text-zinc-800 dark:text-zinc-100 mb-1 font-light mt-4'>
+              <label className='mb-1 mt-4 self-start font-light text-zinc-800 dark:text-zinc-100'>
                 Password
               </label>
-              <div className='w-full flex items-center bg-zinc-100 dark:bg-zinc-700 rounded-md'>
-                <Password className='ml-2 text-zinc-300 dark:text-zinc-600 text-2xl' />
+              <div className='flex w-full items-center rounded-md bg-zinc-100 dark:bg-zinc-700'>
+                <Password className='ml-2 text-2xl text-zinc-300 dark:text-zinc-600' />
                 <input
                   type={`${isPasswordVisible ? 'text' : 'password'}`}
-                  className='p-1 font-inter font-normal text-zinc-500 dark:text-zinc-400 border-none outline-none w-full h-10 bg-transparent focus:outline-none focus:ring-transparent'
+                  className='h-10 w-full border-none bg-transparent p-1 font-inter font-normal text-zinc-500 outline-none focus:outline-none focus:ring-transparent dark:text-zinc-400'
                   {...register('password', { required: true })}
                 />
                 <button onClick={toggleShowPassword} className='mr-4'>
@@ -119,16 +120,16 @@ export const LogInModal = ({
               </div>
 
               {errors.password && (
-                <span className='text-red-500 italic text-center mt-1'>
+                <span className='mt-1 text-center italic text-red-500'>
                   Password is required.
                 </span>
               )}
-              <div className='flex gap-2 mt-6'>
-                <span className='text-zinc-800 dark:text-zinc-100 font-light'>
+              <div className='mt-6 flex gap-2'>
+                <span className='font-light text-zinc-800 dark:text-zinc-100'>
                   No Account?
                 </span>
                 <span
-                  className='text-brand-500 cursor-pointer hover:underline font-medium'
+                  className='cursor-pointer font-medium text-brand-500 hover:underline'
                   onClick={handleAlternateBetweenModals}
                 >
                   Sign Up
@@ -136,7 +137,7 @@ export const LogInModal = ({
               </div>
               <button
                 type='submit'
-                className='text-white font-semibold text-xs tracking-widest rounded-md bg-brand-500 p-2 w-full h-10 flex gap-1 justify-center items-center mt-10 mb-6 hover:bg-brand-300 transition-colors'
+                className='mt-10 mb-6 flex h-10 w-full items-center justify-center gap-1 rounded-md bg-brand-500 p-2 text-xs font-semibold tracking-widest text-white transition-colors hover:bg-brand-300'
               >
                 LOG IN
               </button>

@@ -2,7 +2,7 @@ import { UserCredential } from 'firebase/auth';
 
 function removeArrayElementDuplicates(array: any[], prop: string) {
   const uniqueIds = new Set();
-  const unique = array.filter((element) => {
+  const unique = array.filter(element => {
     const isDuplicate = uniqueIds.has(element[prop]);
     uniqueIds.add(element[prop]);
     return !isDuplicate;
@@ -15,7 +15,7 @@ function parseUser(userCred: UserCredential) {
   const parsedUser = {
     name: user.displayName,
     avatar: user.photoURL,
-    uid: user.uid,
+    uid: user.uid
   };
   return parsedUser;
 }

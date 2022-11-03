@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Navbar } from '../components/Navbar';
 import { Todos } from '../components/Todos';
 import { useTheme } from '../contexts/Theme';
@@ -8,9 +9,9 @@ export function TodoApp() {
 
   return (
     <div
-      className={`${theme} h-screen flex justify-center items-center font-inter`}
+      className={`${theme} flex h-screen items-center justify-center font-inter`}
     >
-      <main className='w-full min-h-screen bg-white dark:bg-gray-600 text-zinc-800 dark:text-zinc-300 flex flex-col'>
+      <main className='flex min-h-screen w-full flex-col bg-white text-zinc-800 dark:bg-gray-600 dark:text-zinc-300'>
         <Navbar />
         <Todos />
       </main>

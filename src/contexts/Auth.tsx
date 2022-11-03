@@ -5,17 +5,18 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signOut,
+  signOut
 } from 'firebase/auth';
 import {
   createContext,
   ReactNode,
   useContext,
   useEffect,
-  useState,
+  useState
 } from 'react';
-import { auth } from '../lib/firebase';
+
 import { parseUser } from '../helpers/utils';
+import { auth } from '../lib/firebase';
 
 type AuthProps = {
   children: ReactNode;
@@ -46,13 +47,13 @@ export function AuthProvider({ children }: AuthProps) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         const { displayName, photoURL, uid } = user;
         setUser({
           name: displayName,
           avatar: photoURL,
-          uid: uid,
+          uid
         });
       }
     });
@@ -89,7 +90,7 @@ export function AuthProvider({ children }: AuthProps) {
     const parsedUser = {
       name: displayName,
       avatar: null,
-      uid: user.user.uid,
+      uid: user.user.uid
     };
     setUser(parsedUser);
   }
@@ -107,7 +108,7 @@ export function AuthProvider({ children }: AuthProps) {
         signInWithGoogle,
         signUpWithEmailAndPassword,
         logOut,
-        signInWithGithub,
+        signInWithGithub
       }}
     >
       {children}
