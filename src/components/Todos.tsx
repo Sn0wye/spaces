@@ -1,12 +1,12 @@
-import { TodoRow } from './TodoRow';
+import { useTodo } from '../contexts/Todos';
 import { Todo } from '../types/todo';
 import { AddTodo } from './AddTodo';
-import { useTodo } from '../contexts/Todos';
-import { TasksStatus } from './TasksStatus';
 import { NoTasks } from './NoTasks';
+import { TasksStatus } from './TasksStatus';
+import { TodoRow } from './TodoRow';
 
 export const Todos = () => {
-  const { todos, deleteTodo, updateTodo, handleCheckTodo } = useTodo();
+  const { todos } = useTodo();
 
   const todoCount = Object.keys(todos).length;
   const completedTodos = todos.filter((todo) => todo.isCompleted).length;
@@ -21,9 +21,6 @@ export const Todos = () => {
           <TodoRow
             key={todo.id}
             todo={todo}
-            handleDeleteTodo={deleteTodo}
-            handleCheckTodo={handleCheckTodo}
-            handleUpdateTodo={updateTodo}
           />
         ))}
       </div>

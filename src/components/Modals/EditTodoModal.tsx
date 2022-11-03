@@ -1,31 +1,40 @@
-import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { Todo } from '../../types/todo';
+import { FormEvent, Fragment, useState } from 'react';
 import { useTheme } from '../../contexts/Theme';
+import { useTodo } from '../../contexts/Todos';
+import { Todo } from '../../types/todo';
 
 type Props = {
   isModalOpen: boolean;
-  handleToggleModal: () => void;
-  handleUpdateTodo: (id: string, newTodoDescription: string) => void;
+  toggleModal: () => void;
   todo: Todo;
 };
 
 const EditTodoModal = ({
   isModalOpen,
-  handleToggleModal,
-  handleUpdateTodo,
+  toggleModal,
   todo,
 }: Props) => {
   const [newTodoDescription, setNewTodoDescription] = useState(
     todo.description
   );
+
+  const { updateTodo } = useTodo();
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    updateTodo(todo.id, newTodoDescription);
+
+    toggleModal();
+  }
+
   const { theme } = useTheme();
   return (
     <Transition appear show={isModalOpen} as={Fragment}>
       <Dialog
         open={isModalOpen}
         onClose={() => {
-          handleToggleModal();
+          toggleModal();
           setNewTodoDescription(todo.description);
         }}
         className={`${theme === 'dark' ? 'dark' : ''}
@@ -44,7 +53,7 @@ const EditTodoModal = ({
             <Dialog.Title className='font-bold text-black dark:text-white text-2xl mt-2'>
               Update Todo Info
             </Dialog.Title>
-            <form className=' w-full flex flex-col justify-center items-center'>
+            <form className=' w-full flex flex-col justify-center items-center' onSubmit={onSubmit}>
               <textarea
                 value={newTodoDescription}
                 onChange={(e) => setNewTodoDescription(e.target.value)}
@@ -53,10 +62,6 @@ const EditTodoModal = ({
               <button
                 type='submit'
                 className='text-white font-bold rounded-md bg-brand-500 p-4 w-full h-10 flex justify-center items-center mt-8 hover:bg-brand-300 transition-colors shadow-md'
-                onClick={() => {
-                  handleToggleModal();
-                  handleUpdateTodo(todo.id, newTodoDescription);
-                }}
               >
                 Done
               </button>

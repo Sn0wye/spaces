@@ -4,7 +4,7 @@ import {
   ReactNode,
   useContext,
   useEffect,
-  useState,
+  useState
 } from 'react';
 import { database } from '../lib/firebase';
 import { Todo } from '../types/todo';
@@ -19,7 +19,7 @@ type TodoContextType = {
   addTodo: (todo: Todo) => void;
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, newTodoDescription: string) => void;
-  handleCheckTodo: (id: string, isChecked: boolean) => void;
+  checkTodo: (id: string, isChecked: boolean) => void;
 };
 
 type FirebaseTodos = Record<
@@ -84,7 +84,7 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
     await update(todoPath, { description: newTodoDescription });
   }
 
-  async function handleCheckTodo(id: string, isCompleted: boolean) {
+  async function checkTodo(id: string, isCompleted: boolean) {
     if (!user) return;
     const todoPath = ref(database, `todos/${user.uid}/todos/${id}`);
 
@@ -102,7 +102,7 @@ export const TodoProvider = ({ children }: TodoContextProps) => {
         addTodo,
         deleteTodo,
         updateTodo,
-        handleCheckTodo,
+        checkTodo,
       }}
     >
       {children}

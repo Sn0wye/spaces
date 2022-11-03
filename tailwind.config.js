@@ -46,6 +46,17 @@ module.exports = {
             scale: 1,
           },
         },
+        disappear: {
+          '0%': {
+            opacity: 1,
+            scale: 1,
+          },
+          '100%': {
+            opacity: 0,
+            scale: 0,
+            transform: 'translateY(-30%)',
+          },
+        },
       },
       animation: {
         appear: 'appear 0.3s ease-in-out',
