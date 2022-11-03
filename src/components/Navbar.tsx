@@ -1,7 +1,5 @@
 import { Popover } from '@headlessui/react';
 
-import SpacesLogoBlack from '../assets/icons/SpacesLogoBlack.svg';
-import SpacesLogo from '../assets/icons/SpacesLogoGroup.svg';
 import { useAuth } from '../contexts/Auth';
 import { useTheme } from '../contexts/Theme';
 import { Moon, Sun } from './IconComponents';
@@ -24,13 +22,13 @@ export function Navbar() {
     <nav className='flex h-[20vh] w-full justify-around bg-surface-light p-4 shadow-md dark:bg-black dark:shadow-xl'>
       {theme === 'dark' ? (
         <img
-          src={SpacesLogo}
+          src='/static/img/SpacesLogoWhite.svg'
           className='w-40'
           alt='Spaces logo, saturn-like planet with a white ring'
         />
       ) : (
         <img
-          src={SpacesLogoBlack}
+          src='/static/img/SpacesLogoBlack.svg'
           className='w-40'
           alt='Spaces logo, saturn-like planet with a white ring'
         />
