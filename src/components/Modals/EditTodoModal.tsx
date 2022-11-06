@@ -57,11 +57,11 @@ const EditTodoModal = ({ isModalOpen, toggleModal, todo }: Props) => {
               <textarea
                 value={newTodoDescription}
                 onChange={e => setNewTodoDescription(e.target.value)}
-                className='mt-8 min-h-[6rem] w-full resize-y rounded-md border-none border-white bg-zinc-100 p-2 font-inter text-sm font-normal text-zinc-500 outline-none focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 dark:border-none dark:bg-zinc-700 dark:text-zinc-400 '
+                className='mt-4 min-h-[6rem] w-full resize-y rounded-md border-none border-white bg-zinc-100 p-2 font-inter text-sm font-normal text-zinc-500 outline-none focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 dark:border-none dark:bg-zinc-700 dark:text-zinc-400 '
               />
               <button
                 type='submit'
-                className='mt-8 flex h-10 w-full items-center justify-center rounded-md bg-brand-500 p-4 font-bold text-white shadow-md transition-colors hover:bg-brand-300'
+                className='mt-4 flex h-10 w-full items-center justify-center rounded-md bg-brand-500 p-4 font-bold text-white shadow-md transition-colors hover:bg-brand-300'
               >
                 Done
               </button>
