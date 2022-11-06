@@ -35,25 +35,25 @@ export function Navbar() {
       )}
       <div className='flex items-center gap-2'>
         <button
-          className='rounded-lg p-2 transition-colors duration-300 hover:bg-zinc-300 dark:hover:bg-zinc-600'
+          className='flex h-10 w-10 items-center justify-center rounded-lg p-1 transition-colors duration-300 hover:bg-zinc-300 dark:hover:bg-zinc-600'
           onClick={handleThemeToggle}
           aria-label='Toggle Theme'
         >
           {theme === 'dark' ? (
-            <Sun className='text-3xl text-brand-500 ' />
+            <Sun className='text-2xl text-brand-500 ' />
           ) : (
-            <Moon className='text-3xl text-brand-500' />
+            <Moon className='text-2xl text-brand-500' />
           )}
         </button>
-        <Popover className='relative'>
+        <Popover className='relative h-10 w-10'>
           <Popover.Button>
             <img
-              className='h-8 w-8 rounded-full'
+              className='flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 hover:bg-zinc-300 dark:hover:bg-zinc-600'
               src={user?.avatar || undefined}
               alt={user?.name || undefined}
             />
           </Popover.Button>
-          <Popover.Panel className='absolute top-8 right-0 z-10 flex h-fit animate-appear flex-col items-center rounded-md bg-zinc-100 p-1 dark:bg-zinc-700 md:top-10'>
+          <Popover.Panel className='absolute top-8 right-0 z-10 flex h-fit animate-appear flex-col items-center rounded-md bg-zinc-100 p-1 dark:bg-zinc-700 md:top-12'>
             <button onClick={logOut} className='popover-icon'>
               Disconnect
             </button>
