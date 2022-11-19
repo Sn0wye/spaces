@@ -1,29 +1,42 @@
 import { Transition } from '@headlessui/react';
-import { useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 
 import { useTodo } from '../contexts/Todos';
 import { Todo } from '../types/todo';
 import { Pencil, Trash } from './IconComponents';
-import EditTodoModal from './Modals/EditTodoModal';
 
 type TodoProps = {
   todo: Todo;
 };
 
 export const TodoRow = ({ todo }: TodoProps) => {
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  // const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
+  const [isTodoBeingEdited, setIsTodoBeingEdited] = useState(false);
+  const [newTodoDescription, setNewTodoDescription] = useState(
+    todo.description
+  );
 
-  const { deleteTodo, checkTodo } = useTodo();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const { deleteTodo, checkTodo, updateTodo } = useTodo();
 
   const handleDeleteTodo = () => {
     setIsTransitioning(false);
     // The todo deletion is delegated to afterLeave callback
   };
 
-  function handleToggleModal() {
-    setIsEditModalOpen(!isEditModalOpen);
-  }
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (typeof e.target.value === 'string') {
+      setNewTodoDescription(e.target.value);
+    } else {
+      e.target.ke;
+    }
+  };
+
+  // function handleToggleModal() {
+  //   setIsEditModalOpen(!isEditModalOpen);
+  // }
 
   return (
     <Transition
@@ -47,20 +60,33 @@ export const TodoRow = ({ todo }: TodoProps) => {
             className='h-5 w-5 rounded-full border-2 border-brand-500 bg-transparent checked:bg-brand-500 hover:bg-brand-300/20 hover:ring-1  hover:ring-brand-300 checked:hover:bg-brand-300 focus:border-none focus:outline-none focus:ring-0'
             onChange={() => checkTodo(todo.id, todo.isCompleted)}
           />
-          <p
-            className={`text-sm text-zinc-800 dark:text-gray-100 ${
-              todo.isCompleted
-                ? 'text-gray-300 line-through dark:text-gray-300'
-                : ''
-            }`}
-          >
-            {todo.description}
-          </p>
+          {isTodoBeingEdited ? (
+            <input
+              value={newTodoDescription}
+              onChange={onChange}
+              className='bg-transparent text-sm text-zinc-800 focus:outline-none focus:ring-0 dark:text-gray-100'
+              ref={inputRef}
+            />
+          ) : (
+            <p
+              className={`text-sm text-zinc-800 dark:text-gray-100 ${
+                todo.isCompleted
+                  ? 'text-gray-300 line-through dark:text-gray-300'
+                  : ''
+              }`}
+            >
+              {todo.description}
+            </p>
+          )}
         </div>
         <div className='flex gap-3'>
           <button
             aria-label='Update a todo'
-            onClick={handleToggleModal}
+            // onClick={handleToggleModal}
+            onClick={() => {
+              setIsTodoBeingEdited(state => !state);
+              inputRef.current?.focus();
+            }}
             className='group rounded p-1 transition-colors hover:bg-zinc-400 dark:hover:bg-gray-400'
           >
             <Pencil className='text-2xl text-gray-300 group-hover:text-brand-500' />
@@ -74,11 +100,11 @@ export const TodoRow = ({ todo }: TodoProps) => {
           </button>
         </div>
       </div>
-      <EditTodoModal
+      {/* <EditTodoModal
         isModalOpen={isEditModalOpen}
         toggleModal={handleToggleModal}
         todo={todo}
-      />
+      /> */}
     </Transition>
   );
 };
